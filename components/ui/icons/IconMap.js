@@ -8,7 +8,7 @@ const IconMap = ({focused}) => {
         style={{
           width: 80,
           height: 80,
-          transform: focused ? [{scale: 1.5}] : [{scale: 1}],
+          transform: focused ? [{scale: 1.4}] : [{scale: 1}],
         }}
         source={require('../../../assets/icons/map.png')}
       />
@@ -17,9 +17,6 @@ const IconMap = ({focused}) => {
         style={{
           marginTop: focused ? 8 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
-          // height: 4,
-          // width: '60%',
-          // borderRadius: 30,
         }}></View>
     </>
   );
