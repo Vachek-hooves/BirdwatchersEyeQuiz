@@ -9,7 +9,7 @@ const IconUser = ({focused}) => {
           width: 80,
           height: 60,
           borderRadius: 10,
-          transform: focused ? [{scale: 1.3}] : [{scale: 1}],
+          transform: focused ? [{scale: 1.5}] : [{scale: 1}],
         }}
         source={require('../../../assets/icons/ornitolog.png')}
       />

@@ -9,7 +9,7 @@ const IconQuiz = ({focused}) => {
           width: 60,
           height: 60,
 
-          transform: focused ? [{scale: 1.3}] : [{scale: 1}],
+          transform: focused ? [{scale: 1.5}] : [{scale: 1}],
         }}
         source={require('../../../assets/icons/birdSmart.png')}
       />

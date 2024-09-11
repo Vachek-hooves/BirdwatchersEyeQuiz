@@ -6,9 +6,9 @@ const IconMap = ({focused}) => {
     <>
       <Image
         style={{
-          width: 60,
-          height: 60,
-          transform: focused ? [{scale: 1.3}] : [{scale: 1}],
+          width: 80,
+          height: 80,
+          transform: focused ? [{scale: 1.5}] : [{scale: 1}],
         }}
         source={require('../../../assets/icons/map.png')}
       />
