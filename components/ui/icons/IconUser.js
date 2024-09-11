@@ -6,8 +6,8 @@ const IconUser = ({focused}) => {
     <>
       <Image
         style={{
-          width: 90,
-          height: 70,
+          width: 80,
+          height: 60,
           borderRadius: 10,
           transform: focused ? [{scale: 1.3}] : [{scale: 1}],
         }}

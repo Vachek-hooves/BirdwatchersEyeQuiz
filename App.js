@@ -12,9 +12,18 @@ import {IconAtlas, IconQuiz} from './components/ui/icons';
 import {BlurView} from '@react-native-community/blur';
 import IconUser from './components/ui/icons/IconUser';
 import {COLOR} from './constants/colors';
+import {ImagedLayout} from './components/AppLayout';
+import IconMap from './components/ui/icons/IconMap';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const withImagedLayout = ScreenComponent => props =>
+  (
+    <ImagedLayout>
+      <ScreenComponent {...props} />
+    </ImagedLayout>
+  );
 
 const TabMenu = () => {
   return (
@@ -63,6 +72,11 @@ const TabMenu = () => {
         name="QuizScreen"
         component={QuizScreen}
         options={{tabBarIcon: ({focused}) => <IconQuiz focused={focused} />}}
+      />
+      <Tab.Screen
+        name="MapScreen"
+        component={MapScreen}
+        options={{tabBarIcon: ({focused}) => <IconMap focused={focused} />}}
       />
     </Tab.Navigator>
   );

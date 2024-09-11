@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {ImagedLayout} from '../components/AppLayout';
 
 const BirdAtlasScreen = () => {
   return (
-    <View>
-      <Text>BirdAtlasScreen</Text>
-    </View>
+    <ImagedLayout>
+      <View>
+        <Text>al;kdssfk</Text>
+      </View>
+    </ImagedLayout>
   );
 };
 

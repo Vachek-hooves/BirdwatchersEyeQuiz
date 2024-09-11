@@ -1,25 +1,28 @@
 import {View, Image} from 'react-native';
 import {COLOR} from '../../../constants/colors';
 
-const IconQuiz = ({focused}) => {
+const IconMap = ({focused}) => {
   return (
     <>
       <Image
         style={{
           width: 60,
           height: 60,
-
           transform: focused ? [{scale: 1.3}] : [{scale: 1}],
         }}
-        source={require('../../../assets/icons/birdSmart.png')}
+        source={require('../../../assets/icons/map.png')}
       />
+
       <View
         style={{
           marginTop: focused ? 8 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
+          // height: 4,
+          // width: '60%',
+          // borderRadius: 30,
         }}></View>
     </>
   );
 };
 
-export default IconQuiz;
+export default IconMap;

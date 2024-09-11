@@ -6,8 +6,8 @@ const IconAtlas = ({focused}) => {
     <>
       <Image
         style={{
-          width: 70,
-          height: 70,
+          width: 60,
+          height: 60,
           transform: focused ? [{scale: 1.3}] : [{scale: 1}],
         }}
         source={require('../../../assets/icons/falcon.png')}
