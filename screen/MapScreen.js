@@ -8,18 +8,18 @@ import {
 import {ImageOnBg} from '../components/layout';
 import MapView, {Marker} from 'react-native-maps';
 import {useState} from 'react';
-import { COLOR } from '../constants/colors';
-
+import {COLOR} from '../constants/colors';
+import {ImagedLayout} from '../components/AppLayout';
 
 const {height} = Dimensions.get('screen');
-const MAP_HEIGHT = height * 0.8;
+const MAP_HEIGHT = height * 0.6;
 
 const MapScreen = ({latitude, longitude}) => {
   const [region, setRegion] = useState({
-    latitude: 45.438759,
-    longitude: 12.327145,
-    latitudeDelta: 0.032,
-    longitudeDelta: 0.041,
+    latitude: 37.9664,
+    longitude: -99.8440,
+    latitudeDelta: 15.032,
+    longitudeDelta: 15.041,
   });
 
   const zoomIn = () => {
@@ -39,7 +39,7 @@ const MapScreen = ({latitude, longitude}) => {
   };
 
   return (
-    <View>
+    <ImagedLayout blur={10}>
       <MapView
         style={styles.rootContainer}
         region={region}
@@ -59,7 +59,7 @@ const MapScreen = ({latitude, longitude}) => {
           <Text style={styles.buttonText}>-</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ImagedLayout>
   );
 };
 
