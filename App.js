@@ -8,13 +8,36 @@ import {
   QuizScreen,
   UserScreen,
 } from './screen';
+import {IconAtlas} from './components/ui/icons';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabMenu = () => {
-  return;
-  <Tab.Navigator></Tab.Navigator>;
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        title: '',
+        headerShown: false,
+        tabBarStyle: {
+          position: 'absolute',
+          bottom: 15,
+          left: 10,
+          right: 10,
+          elevation: 0,
+          backgroundColor: '#000',
+          borderRadius: 40,
+          height: 90,
+          paddingTop: 40,
+        },
+      }}>
+      <Tab.Screen
+        name="BirdAtlasScreen"
+        component={BirdAtlasScreen}
+        options={{tabBarIcon: ({focused}) => <IconAtlas focused={focused} />}}
+      />
+    </Tab.Navigator>
+  );
 };
 
 function App() {
@@ -27,11 +50,10 @@ function App() {
           animationDuration: 800,
         }}>
         <Stack.Screen name="IntroScreen" component={IntroScreen} />
+        <Stack.Screen name="TabMenuRender" component={TabMenu} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-// app updated
 
 export default App;
