@@ -4,7 +4,7 @@ import {ImagedLayout} from '../components/AppLayout';
 
 const BirdAtlasScreen = () => {
   return (
-    <ImagedLayout>
+    <ImagedLayout blur={9}>
       <View>
         <Text>al;kdssfk</Text>
       </View>
