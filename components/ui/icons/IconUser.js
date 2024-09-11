@@ -1,23 +1,34 @@
-import {View, Image} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import {COLOR} from '../../../constants/colors';
 
 const IconUser = ({focused}) => {
   return (
     <>
       <Image
-        style={{width: 90, height: 70, borderRadius: 10}}
+        style={{
+          width: 90,
+          height: 70,
+          borderRadius: 10,
+          transform: focused ? [{scale: 1.3}] : [{scale: 1}],
+        }}
         source={require('../../../assets/icons/ornitolog.png')}
       />
       <View
         style={{
-          marginTop: focused ? 7 : 0,
+          marginTop: focused ? 8 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
-          height: 4,
-          width: '60%',
-          borderRadius: 30,
+          // height: 4,
+          // width: '80%',
+          // borderRadius: 30,
         }}></View>
     </>
   );
 };
 
 export default IconUser;
+
+const styles = StyleSheet.create({
+  imageFocused: {
+    transform: [{scale: 1.2}],
+  },
+});
