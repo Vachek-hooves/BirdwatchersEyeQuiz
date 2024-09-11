@@ -9,6 +9,7 @@ import {
   UserScreen,
 } from './screen';
 import {IconAtlas} from './components/ui/icons';
+import {BlurView} from '@react-native-community/blur';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,11 +26,25 @@ const TabMenu = () => {
           left: 10,
           right: 10,
           elevation: 0,
-          backgroundColor: '#000',
           borderRadius: 40,
           height: 90,
           paddingTop: 40,
+          overflow: 'hidden', // This is important for the BlurView
         },
+        tabBarBackground: () => (
+          <BlurView
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            blurType="dark"
+            blurAmount={6}
+            reducedTransparencyFallbackColor="light"
+          />
+        ),
       }}>
       <Tab.Screen
         name="BirdAtlasScreen"
