@@ -4,17 +4,18 @@ import {COLOR} from '../../../constants/colors';
 const IconQuiz = ({focused}) => {
   return (
     <>
-      <View
-        styles={{
-          backgroundColor: focused ? 'black' : null,
-          height: 10,
-          width: 10,
-          borderRadius: 10,
-        }}></View>
       <Image
         style={{width: 70, height: 70, borderRadius: 10}}
         source={require('../../../assets/icons/birdSmart.png')}
       />
+      <View
+        style={{
+          marginTop: 3,
+          backgroundColor: focused ? COLOR.lightGreen : null,
+          height: 4,
+          width: '60%',
+          borderRadius: 30,
+        }}></View>
     </>
   );
 };
