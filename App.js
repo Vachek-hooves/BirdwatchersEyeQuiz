@@ -29,8 +29,8 @@ const TabMenu = () => {
           right: 10,
           elevation: 0,
           borderRadius: 40,
-          height: 150,
-          paddingTop: 40,
+          height: 100,
+          paddingTop: 55,
           // backgroundColor: COLOR.lightGreen,
           overflow: 'hidden', // This is important for the BlurView
         },
