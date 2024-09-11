@@ -4,17 +4,22 @@ import {COLOR} from '../../../constants/colors';
 const IconAtlas = ({focused}) => {
   return (
     <>
-      <View
-        styles={{
-          backgroundColor: focused ? COLOR.gold : null,
-          height: 10,
-          width: 10,
-          borderRadius: 10,
-        }}></View>
       <Image
         style={{width: 70, height: 70}}
-        source={require('../../../assets/icons/vividly.png')}
+        source={require('../../../assets/icons/falcon.png')}
       />
+      <View
+        style={{
+          backgroundColor: focused ? '#fff' : null,
+          borderRadius: 40,
+        }}></View>
+      <View
+        styles={{
+          backgroundColor: focused ? '#fff' : '#fff',
+          height: 20,
+          width: 20,
+          borderRadius: 10,
+        }}></View>
     </>
   );
 };

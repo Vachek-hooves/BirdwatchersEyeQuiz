@@ -8,8 +8,10 @@ import {
   QuizScreen,
   UserScreen,
 } from './screen';
-import {IconAtlas} from './components/ui/icons';
+import {IconAtlas, IconQuiz} from './components/ui/icons';
 import {BlurView} from '@react-native-community/blur';
+import IconUser from './components/ui/icons/IconUser';
+import {COLOR} from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,8 +29,9 @@ const TabMenu = () => {
           right: 10,
           elevation: 0,
           borderRadius: 40,
-          height: 90,
+          height: 150,
           paddingTop: 40,
+          // backgroundColor: COLOR.lightGreen,
           overflow: 'hidden', // This is important for the BlurView
         },
         tabBarBackground: () => (
@@ -50,6 +53,16 @@ const TabMenu = () => {
         name="BirdAtlasScreen"
         component={BirdAtlasScreen}
         options={{tabBarIcon: ({focused}) => <IconAtlas focused={focused} />}}
+      />
+      <Tab.Screen
+        name="UserScreen"
+        component={UserScreen}
+        options={{tabBarIcon: ({focused}) => <IconUser focused={focused} />}}
+      />
+      <Tab.Screen
+        name="QuizScreen"
+        component={QuizScreen}
+        options={{tabBarIcon: ({focused}) => <IconQuiz focused={focused} />}}
       />
     </Tab.Navigator>
   );
