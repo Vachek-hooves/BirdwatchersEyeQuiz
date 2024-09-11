@@ -19,7 +19,9 @@ const BirdAtlasCard = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.cardContainer}>
+      <ScrollView
+        contentContainerStyle={styles.cardContainer}
+        showsVerticalScrollIndicator={false}>
         {ATLAS.map(bird => (
           <BirdCard
             key={bird.id}
@@ -28,7 +30,7 @@ const BirdAtlasCard = () => {
           />
         ))}
       </ScrollView>
-     
+
       {selectedBird && (
         <BirdModal
           bird={selectedBird}
@@ -87,8 +89,10 @@ const styles = StyleSheet.create({
     // backgroundColor: '#f0f0f0',
   },
   cardContainer: {
+    flexGrow: 1,
     alignItems: 'center',
     padding: 10,
+    paddingBottom: 100, // Add some bottom padding
   },
   card: {
     width: width * 0.9,
