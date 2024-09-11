@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {COLOR} from '../../../constants/colors';
 
 const IconQuiz = ({focused}) => {
@@ -10,7 +10,7 @@ const IconQuiz = ({focused}) => {
       />
       <View
         style={{
-          marginTop: 3,
+          marginTop: focused ? 7 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
           height: 4,
           width: '60%',
@@ -21,5 +21,3 @@ const IconQuiz = ({focused}) => {
 };
 
 export default IconQuiz;
-
-const styles = StyleSheet.create({});

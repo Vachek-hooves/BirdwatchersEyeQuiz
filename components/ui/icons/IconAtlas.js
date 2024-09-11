@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {COLOR} from '../../../constants/colors';
 
 const IconAtlas = ({focused}) => {
@@ -11,6 +11,7 @@ const IconAtlas = ({focused}) => {
 
       <View
         style={{
+          marginTop: focused ? 7 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
           height: 4,
           width: '60%',
@@ -21,5 +22,3 @@ const IconAtlas = ({focused}) => {
 };
 
 export default IconAtlas;
-
-const styles = StyleSheet.create({});
