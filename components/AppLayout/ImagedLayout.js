@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
 
-const ImagedLayout = () => {
+const ImagedLayout = ({children, style}) => {
   return (
-    <View>
-      <Text>ImagedLayout</Text>
-    </View>
+    <ImageBackground style={[style, {flex: 1}]}>{children}</ImageBackground>
   );
 };
 

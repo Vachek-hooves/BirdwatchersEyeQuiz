@@ -17,9 +17,6 @@ const IconQuiz = ({focused}) => {
         style={{
           marginTop: focused ? 8 : 0,
           backgroundColor: focused ? COLOR.lightGreen : null,
-        //   height: 4,
-        //   width: '60%',
-        //   borderRadius: 30,
         }}></View>
     </>
   );
