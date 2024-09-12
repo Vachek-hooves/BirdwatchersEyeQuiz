@@ -1,5 +1,6 @@
 import {useState, useEffect, useContext, createContext} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {easyLevel, hardLevel} from '../data/quiz_data';
 
 export const BirdContext = createContext({
   customBirds: [],
@@ -9,9 +10,18 @@ export const BirdContext = createContext({
 
 export const BirdProvider = ({children}) => {
   const [customBirds, setCustomBirds] = useState([]);
+  const [easy, setEasy] = useState([]);
+  const [hard, setHard] = useState([]);
+  
   useEffect(() => {
     loadCustomBirds();
+    loadQuizData();
   }, []);
+
+  const loadQuizData = async () => {
+    try {
+    } catch (error) {}
+  };
 
   const loadCustomBirds = async () => {
     try {
