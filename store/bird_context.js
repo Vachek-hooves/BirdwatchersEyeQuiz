@@ -8,6 +8,7 @@ export const BirdContext = createContext({
   hard: [],
   addCustomBird: () => {},
   deleteCustomBird: () => {},
+  chooseQuizMode: () => {},
 });
 
 export const BirdProvider = ({children}) => {
@@ -77,12 +78,23 @@ export const BirdProvider = ({children}) => {
     }
   };
 
+  const chooseQuizMode = mode => {
+    switch (mode) {
+      case 'easy':
+        return easy;
+      case 'hard':
+        return hard;
+      default:
+        return [];
+    }
+  };
   const value = {
     easy,
     hard,
     customBirds,
     addCustomBird,
     deleteCustomBird,
+    chooseQuizMode,
   };
   return <BirdContext.Provider value={value}>{children}</BirdContext.Provider>;
 };

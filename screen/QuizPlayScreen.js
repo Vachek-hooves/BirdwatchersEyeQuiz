@@ -1,11 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
+import {useBirdContext} from '../store/bird_context';
 
+const QuizPlayScreen = ({navigation, route}) => {
+  const {chooseQuizMode} = useBirdContext();
+  const {difficulty} = route.params;
+  const quizData = chooseQuizMode(difficulty);
+  console.log(quizData);
 
-const QuizPlayScreen = ({navigation}) => {
-  const handleDifficultySelect = difficulty => {
-    navigation.navigate('QuizPlayScreen', {difficulty});
-  };
-  
   return (
     <View>
       <Text>QuizPlayScreen</Text>
