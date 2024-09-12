@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { ImagedLayout } from '../components/AppLayout';
 import { useBirdContext } from '../store/bird_context';
 
@@ -48,7 +48,7 @@ const QuizQuestion = ({ route }) => {
         // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
         console.log('Quiz finished. Final score:', score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0));
       }
-    }, 1500); // 1.5 second delay
+    }, 2000); // 1.5 second delay
   };
 
   const getButtonStyle = (option) => {
@@ -100,19 +100,37 @@ const styles = StyleSheet.create({
   },
   answerButton: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    padding: 15,
+    padding: 20,
     borderRadius: 10,
     marginVertical: 10,
     width: '100%',
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
   },
   correctAnswer: {
-    backgroundColor: 'rgba(0, 255, 0, 0.3)', // Green for correct answer
+    backgroundColor: 'rgba(0, 255, 0, 0.3)',
+    shadowColor: 'rgba(0, 255, 0, 0.5)',
+    shadowOffset: { width: 3, height: 9 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 8,
   },
   wrongAnswer: {
-    backgroundColor: 'rgba(255, 0, 0, 0.3)', // Red for wrong answer
+    backgroundColor: 'rgba(255, 0, 0, 0.3)',
+    shadowColor: 'rgba(255, 0, 0, 0.5)',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 8,
   },
   disabledAnswer: {
-    opacity: 0.5, // Dim other options when an answer is selected
+    opacity: 0.5,
   },
   answerText: {
     fontSize: 18,
