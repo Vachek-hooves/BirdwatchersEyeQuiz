@@ -5,11 +5,12 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({route}) => {
+const QuizQuestion = ({route, navigation}) => {
   const {quizId, difficulty} = route.params;
   const {chooseQuizMode} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -17,6 +18,8 @@ const QuizQuestion = ({route}) => {
   const [quizData, setQuizData] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [quizFinished, setQuizFinished] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   useEffect(() => {
     const quizLevelData = chooseQuizMode(difficulty);
@@ -40,24 +43,30 @@ const QuizQuestion = ({route}) => {
     setSelectedAnswer(selectedAnswer);
     setIsAnswered(true);
 
-    if (selectedAnswer === currentQuestion.correctAnswer) {
+    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    if (isCorrect) {
       setScore(score + 1);
     }
 
-    // Move to next question after a short delay
+    setAnsweredQuestions([
+      ...answeredQuestions,
+      {
+        question: currentQuestion.question,
+        selectedAnswer,
+        correctAnswer: currentQuestion.correctAnswer,
+        isCorrect,
+      },
+    ]);
+
     setTimeout(() => {
       if (currentQuestionIndex < quizData.questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(null);
         setIsAnswered(false);
       } else {
-        // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        console.log(
-          'Quiz finished. Final score:',
-          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
-        );
+        setQuizFinished(true);
       }
-    }, 2000); // 1.5 second delay
+    }, 2000);
   };
 
   const getButtonStyle = option => {
@@ -77,6 +86,52 @@ const QuizQuestion = ({route}) => {
       return [styles.answerText, styles.wrongAnswerText];
     return [styles.answerText, styles.disabledAnswerText];
   };
+
+  const renderQuizSummary = () => (
+    <ScrollView style={styles.summaryContainer}>
+      <Text style={styles.summaryTitle}>Quiz Summary</Text>
+      <Text style={styles.finalScore}>
+        Final Score: {score} / {quizData.questions.length}
+      </Text>
+      {answeredQuestions.map((item, index) => (
+        <View key={index} style={styles.summaryItem}>
+          <Text style={styles.summaryQuestion}>
+            {index + 1}. {item.question}
+          </Text>
+          <Text
+            style={[
+              styles.summaryAnswer,
+              item.isCorrect
+                ? styles.correctAnswerText
+                : styles.wrongAnswerText,
+            ]}>
+            Your answer: {item.selectedAnswer}
+          </Text>
+          {!item.isCorrect && (
+            <Text style={[styles.summaryAnswer, styles.correctAnswerText]}>
+              Correct answer: {item.correctAnswer}
+            </Text>
+          )}
+        </View>
+      ))}
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}>
+        <Text style={styles.backButtonText}>Back to Quiz Selection</Text>
+      </TouchableOpacity>
+      <View style={{height:30}}></View>
+    </ScrollView>
+  );
+
+  if (quizFinished) {
+    return (
+      <ImagedLayout blur={300}>
+        <SafeAreaView style={styles.safeArea}>
+          {renderQuizSummary()}
+        </SafeAreaView>
+      </ImagedLayout>
+    );
+  }
 
   return (
     <ImagedLayout blur={300}>
@@ -115,7 +170,8 @@ export default QuizQuestion;
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
+    // flex: 1,
+    paddingBottom: 100,
   },
   scoreContainer: {
     flexDirection: 'row',
@@ -235,5 +291,47 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     marginTop: 20,
+  },
+  summaryContainer: {
+    padding: 10,
+  },
+  summaryTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  finalScore: {
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  summaryItem: {
+    marginBottom: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 10,
+    borderRadius: 10,
+  },
+  summaryQuestion: {
+    fontSize: 18,
+    color: '#fff',
+    marginBottom: 5,
+  },
+  summaryAnswer: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  backButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  backButtonText: {
+    color: '#fff',
+    fontSize: 18,
   },
 });
