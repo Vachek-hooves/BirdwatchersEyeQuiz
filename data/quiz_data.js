@@ -117,7 +117,7 @@ export const easyLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'e3',
     questions: [
@@ -178,7 +178,7 @@ export const easyLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'e4',
     questions: [
@@ -241,7 +241,7 @@ export const easyLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'e5',
     questions: [
@@ -304,7 +304,7 @@ export const easyLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'e6',
     questions: [
@@ -368,7 +368,7 @@ export const easyLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'e7',
     questions: [
@@ -689,7 +689,7 @@ export const hardLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'l3',
     questions: [
@@ -819,7 +819,7 @@ export const hardLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'l4',
     questions: [
@@ -900,7 +900,7 @@ export const hardLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'l5',
     questions: [
@@ -1023,7 +1023,7 @@ export const hardLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'l6',
     questions: [
@@ -1132,7 +1132,7 @@ export const hardLevel = [
     ],
   },
   {
-    active: true,
+    active: false,
     score: 0,
     id: 'l7',
     questions: [

@@ -4,6 +4,8 @@ import {easyLevel, hardLevel} from '../data/quiz_data';
 
 export const BirdContext = createContext({
   customBirds: [],
+  easy: [],
+  hard: [],
   addCustomBird: () => {},
   deleteCustomBird: () => {},
 });
@@ -12,7 +14,7 @@ export const BirdProvider = ({children}) => {
   const [customBirds, setCustomBirds] = useState([]);
   const [easy, setEasy] = useState([]);
   const [hard, setHard] = useState([]);
-  
+
   useEffect(() => {
     loadCustomBirds();
     loadQuizData();
@@ -20,7 +22,28 @@ export const BirdProvider = ({children}) => {
 
   const loadQuizData = async () => {
     try {
-    } catch (error) {}
+      // Load easy level data
+      const storedEasyData = await AsyncStorage.getItem('easyLevel');
+      if (storedEasyData) {
+        setEasy(JSON.parse(storedEasyData));
+      } else {
+        // If not in AsyncStorage, use the imported data and save it
+        await AsyncStorage.setItem('easyLevel', JSON.stringify(easyLevel));
+        setEasy(easyLevel);
+      }
+
+      // Load hard level data
+      const storedHardData = await AsyncStorage.getItem('hardLevel');
+      if (storedHardData) {
+        setHard(JSON.parse(storedHardData));
+      } else {
+        // If not in AsyncStorage, use the imported data and save it
+        await AsyncStorage.setItem('hardLevel', JSON.stringify(hardLevel));
+        setHard(hardLevel);
+      }
+    } catch (error) {
+      console.error('Error loading quiz data:', error);
+    }
   };
 
   const loadCustomBirds = async () => {
@@ -55,6 +78,8 @@ export const BirdProvider = ({children}) => {
   };
 
   const value = {
+    easy,
+    hard,
     customBirds,
     addCustomBird,
     deleteCustomBird,
