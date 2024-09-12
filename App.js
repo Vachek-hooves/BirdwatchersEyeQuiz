@@ -14,6 +14,7 @@ import IconUser from './components/ui/icons/IconUser';
 import {COLOR} from './constants/colors';
 import {ImagedLayout} from './components/AppLayout';
 import IconMap from './components/ui/icons/IconMap';
+import {BirdProvider} from './store/bird_context';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -84,17 +85,19 @@ const TabMenu = () => {
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          animation: 'fade_from_bottom',
-          animationDuration: 800,
-        }}>
-        <Stack.Screen name="IntroScreen" component={IntroScreen} />
-        <Stack.Screen name="TabMenuRender" component={TabMenu} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <BirdProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            animation: 'fade_from_bottom',
+            animationDuration: 800,
+          }}>
+          <Stack.Screen name="IntroScreen" component={IntroScreen} />
+          <Stack.Screen name="TabMenuRender" component={TabMenu} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </BirdProvider>
   );
 }
 
