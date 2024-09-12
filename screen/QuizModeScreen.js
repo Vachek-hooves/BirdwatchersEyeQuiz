@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {useBirdContext} from '../store/bird_context';
 import {ImagedLayout} from '../components/AppLayout';
 import {COLOR} from '../constants/colors';
+import {IconFlyBack} from '../components/ui/icons';
 
 const QuizModeScreen = ({navigation}) => {
   const handleDifficultySelect = difficulty => {
@@ -25,6 +26,7 @@ const QuizModeScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
+      <IconFlyBack />
     </ImagedLayout>
   );
 };
