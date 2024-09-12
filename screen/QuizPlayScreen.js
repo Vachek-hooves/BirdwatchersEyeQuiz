@@ -10,6 +10,13 @@ import {useBirdContext} from '../store/bird_context';
 import {ImagedLayout} from '../components/AppLayout';
 import {IconFlyBack} from '../components/ui/icons';
 
+// New component to display difficulty
+const DifficultyBadge = ({ difficulty }) => (
+  <View style={styles.difficultyBadge}>
+    <Text style={styles.difficultyText}>{difficulty}</Text>
+  </View>
+);
+
 const QuizPlayScreen = ({navigation, route}) => {
   const {chooseQuizMode} = useBirdContext();
   const {difficulty} = route.params;
@@ -19,6 +26,7 @@ const QuizPlayScreen = ({navigation, route}) => {
     // Navigate to the actual quiz screen with the selected quiz ID
     navigation.navigate('QuizQuestion', {quizId, difficulty});
   };
+
   return (
     <ImagedLayout>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -33,6 +41,7 @@ const QuizPlayScreen = ({navigation, route}) => {
               source={{uri: quiz.image}}
               style={styles.cardBackground}
               imageStyle={styles.cardImage}>
+              <DifficultyBadge difficulty={difficulty} />
               <View style={styles.cardContent}>
                 <Text style={styles.cardTitle}>Quiz Level {quiz.id}</Text>
                 <Text style={styles.cardStatus}>
@@ -93,5 +102,19 @@ const styles = StyleSheet.create({
   cardScore: {
     fontSize: 16,
     color: '#fff',
+  },
+  difficultyBadge: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 15,
+  },
+  difficultyText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
 });
