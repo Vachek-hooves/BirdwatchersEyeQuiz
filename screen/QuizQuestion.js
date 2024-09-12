@@ -12,7 +12,7 @@ import {useBirdContext} from '../store/bird_context';
 
 const QuizQuestion = ({route, navigation}) => {
   const {quizId, difficulty} = route.params;
-  const {chooseQuizMode} = useBirdContext();
+  const {chooseQuizMode, updateQuizScore} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -36,6 +36,11 @@ const QuizQuestion = ({route, navigation}) => {
   }
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
+
+  const handleQuizFinish = () => {
+    setQuizFinished(true);
+    updateQuizScore(difficulty, quizId, score);
+  };
 
   const handleAnswer = selectedAnswer => {
     if (isAnswered) return;
@@ -64,7 +69,7 @@ const QuizQuestion = ({route, navigation}) => {
         setSelectedAnswer(null);
         setIsAnswered(false);
       } else {
-        setQuizFinished(true);
+        handleQuizFinish();
       }
     }, 2000);
   };
@@ -116,7 +121,7 @@ const QuizQuestion = ({route, navigation}) => {
       ))}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.goBack()}>
+        onPress={() => navigation.navigate('QuizPlayScreen', { difficulty })}>
         <Text style={styles.backButtonText}>Back to Quiz Selection</Text>
       </TouchableOpacity>
       <View style={{height:30}}></View>
