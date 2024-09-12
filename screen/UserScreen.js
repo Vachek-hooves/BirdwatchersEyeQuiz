@@ -7,13 +7,14 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ScrollView,
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import ImagePicker from '../components/ui/interface/ImagePicker';
 import {COLOR} from '../constants/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {IconAccaunt, IconCamera} from '../components/ui/icons';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useBirdContext} from '../store/bird_context';
 
 const UserScreen = () => {
   const [name, setName] = useState('');
@@ -21,6 +22,7 @@ const UserScreen = () => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [nameError, setNameError] = useState('');
+  const {easy, hard} = useBirdContext();
 
   useEffect(() => {
     loadUserData();
@@ -66,6 +68,30 @@ const UserScreen = () => {
     setIsEditing(true);
   };
 
+  const renderQuizStatistics = () => (
+    <View style={styles.statisticsContainer}>
+      <Text style={styles.statisticsTitle}>Quiz Statistics</Text>
+      <View style={styles.levelContainer}>
+        <Text style={styles.levelTitle}>Easy Level</Text>
+        {easy.map((quiz, index) => (
+          <Text key={quiz.id} style={styles.quizScore}>
+            Quiz {index + 1}: {quiz.score}/10{' '}
+            {quiz.active ? '(Unlocked)' : '(Locked)'}
+          </Text>
+        ))}
+      </View>
+      <View style={styles.levelContainer}>
+        <Text style={styles.levelTitle}>Hard Level</Text>
+        {hard.map((quiz, index) => (
+          <Text key={quiz.id} style={styles.quizScore}>
+            Quiz {index + 1}: {quiz.score}/10{' '}
+            {quiz.active ? '(Unlocked)' : '(Locked)'}
+          </Text>
+        ))}
+      </View>
+    </View>
+  );
+
   const renderProfileView = () => (
     <>
       {photo && (
@@ -77,9 +103,9 @@ const UserScreen = () => {
       )}
       <Text style={styles.nameSaved}>{name}</Text>
       <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
-        {/* <Icon name="account-edit" size={24} color={COLOR.matteYellow} /> */}
         <Text style={styles.editButtonText}>Edit Profile</Text>
       </TouchableOpacity>
+      {renderQuizStatistics()}
     </>
   );
 
@@ -124,9 +150,14 @@ const UserScreen = () => {
 
   return (
     <ImagedLayout blur={9}>
-      <View style={styles.container}>
-        {isRegistered && !isEditing ? renderProfileView() : renderEditView()}
-      </View>
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          {isRegistered && !isEditing ? renderProfileView() : renderEditView()}
+        </View>
+        <View style={{height: 100}}></View>
+      </ScrollView>
     </ImagedLayout>
   );
 };
@@ -228,5 +259,36 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: COLOR.milk,
     letterSpacing: 3,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
+  statisticsContainer: {
+    marginTop: 20,
+    backgroundColor: COLOR.lightGreen + '20',
+    padding: 15,
+    borderRadius: 10,
+  },
+  statisticsTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: COLOR.milk,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  levelContainer: {
+    marginBottom: 15,
+  },
+  levelTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: COLOR.matteYellow,
+    marginBottom: 5,
+  },
+  quizScore: {
+    fontSize: 16,
+    color: COLOR.milk,
+    marginBottom: 3,
   },
 });
