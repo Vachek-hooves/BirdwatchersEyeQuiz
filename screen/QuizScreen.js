@@ -19,7 +19,7 @@ const WELCOME_TEXT = [
 const QuizScreen = ({navigation}) => {
   return (
     <ImagedLayout blur={9}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Text style={styles.title}>Welcome to Birdwatcher's Eye Quiz!</Text>
           {WELCOME_TEXT.map((paragraph, index) => (
@@ -33,6 +33,7 @@ const QuizScreen = ({navigation}) => {
             <Text style={styles.buttonText}>Start Quiz</Text>
           </TouchableOpacity>
         </View>
+        <View style={{height: 100}}></View>
       </ScrollView>
     </ImagedLayout>
   );

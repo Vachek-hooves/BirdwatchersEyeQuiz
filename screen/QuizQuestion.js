@@ -121,10 +121,10 @@ const QuizQuestion = ({route, navigation}) => {
       ))}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.navigate('QuizPlayScreen', { difficulty })}>
+        onPress={() => navigation.navigate('QuizPlayScreen', {difficulty})}>
         <Text style={styles.backButtonText}>Back to Quiz Selection</Text>
       </TouchableOpacity>
-      <View style={{height:30}}></View>
+      <View style={{height: 30}}></View>
     </ScrollView>
   );
 
@@ -141,31 +141,35 @@ const QuizQuestion = ({route, navigation}) => {
   return (
     <ImagedLayout blur={300}>
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.scoreContainer}>
-          <View style={styles.scoreWrapper}>
-            <Text style={styles.scoreLabel}>Score:</Text>
-            <Text style={styles.scoreValue}>{score}</Text>
+        <ScrollView>
+          <View style={styles.scoreContainer}>
+            <View style={styles.scoreWrapper}>
+              <Text style={styles.scoreLabel}>Score:</Text>
+              <Text style={styles.scoreValue}>{score}</Text>
+            </View>
+            <View style={styles.progressWrapper}>
+              <Text style={styles.progressLabel}>Question:</Text>
+              <Text style={styles.progressValue}>
+                {currentQuestionIndex + 1}
+              </Text>
+              <Text style={styles.progressTotal}>
+                / {quizData.questions.length}
+              </Text>
+            </View>
           </View>
-          <View style={styles.progressWrapper}>
-            <Text style={styles.progressLabel}>Question:</Text>
-            <Text style={styles.progressValue}>{currentQuestionIndex + 1}</Text>
-            <Text style={styles.progressTotal}>
-              / {quizData.questions.length}
-            </Text>
+          <View style={styles.questionContainer}>
+            <Text style={styles.questionText}>{currentQuestion.question}</Text>
+            {currentQuestion.options.map((option, index) => (
+              <TouchableOpacity
+                key={index}
+                style={getButtonStyle(option)}
+                onPress={() => handleAnswer(option)}
+                disabled={isAnswered}>
+                <Text style={getTextStyle(option)}>{option}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
-        </View>
-        <View style={styles.questionContainer}>
-          <Text style={styles.questionText}>{currentQuestion.question}</Text>
-          {currentQuestion.options.map((option, index) => (
-            <TouchableOpacity
-              key={index}
-              style={getButtonStyle(option)}
-              onPress={() => handleAnswer(option)}
-              disabled={isAnswered}>
-              <Text style={getTextStyle(option)}>{option}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+        </ScrollView>
       </SafeAreaView>
     </ImagedLayout>
   );

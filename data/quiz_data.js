@@ -9,17 +9,17 @@ export const easyLevel = [
       {
         question: 'Which bird is known for its ability to mimic human speech?',
         correctAnswer: 'Parrot',
-        options: ['Parrot', 'Eagle', 'Penguin'],
+        options: ['Eagle', 'Parrot', 'Penguin'],
       },
       {
         question: 'Which bird is famous for its colorful tail feathers?',
         correctAnswer: 'Peacock',
-        options: ['Peacock', 'Sparrow', 'Pigeon'],
+        options: ['Sparrow', 'Pigeon', 'Peacock'],
       },
       {
         question: 'Which bird is known for its long neck?',
         correctAnswer: 'Flamingo',
-        options: ['Flamingo', 'Robin', 'Owl'],
+        options: ['Robin', 'Flamingo', 'Owl'],
       },
       {
         question:
@@ -35,12 +35,12 @@ export const easyLevel = [
       {
         question: "Which bird is known for its distinctive 'coo' sound?",
         correctAnswer: 'Dove',
-        options: ['Dove', 'Hawk', 'Chicken'],
+        options: ['Hawk', 'Dove', 'Chicken'],
       },
       {
         question: 'Which bird is often used as a symbol of peace?',
         correctAnswer: 'Dove',
-        options: ['Dove', 'Eagle', 'Vulture'],
+        options: ['Eagle', 'Vulture', 'Dove'],
       },
       {
         question: 'Which bird is known for its ability to swim and dive?',
@@ -50,7 +50,7 @@ export const easyLevel = [
       {
         question: 'Which bird is known for its red breast?',
         correctAnswer: 'Robin',
-        options: ['Robin', 'Crow', 'Seagull'],
+        options: ['Crow', 'Robin', 'Seagull'],
       },
       {
         question: 'Which bird is known for its hooting sound?',
@@ -69,12 +69,12 @@ export const easyLevel = [
       {
         question: 'Which bird is the national bird of the United States?',
         correctAnswer: 'Bald Eagle',
-        options: ['Bald Eagle', 'Turkey', 'Blue Jay'],
+        options: ['Turkey', 'Bald Eagle', 'Blue Jay'],
       },
       {
         question: 'Which bird is known for its ability to run fast?',
         correctAnswer: 'Ostrich',
-        options: ['Ostrich', 'Penguin', 'Flamingo'],
+        options: ['Penguin', 'Ostrich', 'Flamingo'],
       },
       {
         question: 'Which bird is often associated with wisdom?',
@@ -89,12 +89,12 @@ export const easyLevel = [
       {
         question: 'Which bird is known for its beautiful song?',
         correctAnswer: 'Nightingale',
-        options: ['Nightingale', 'Vulture', 'Penguin'],
+        options: ['Penguin', 'Nightingale', 'Vulture'],
       },
       {
         question: 'Which bird is often seen on Christmas cards?',
         correctAnswer: 'Robin',
-        options: ['Robin', 'Ostrich', 'Flamingo'],
+        options: ['Ostrich', 'Robin', 'Flamingo'],
       },
       {
         question:
@@ -106,12 +106,12 @@ export const easyLevel = [
         question:
           'Which bird is known for its distinctive black and white plumage?',
         correctAnswer: 'Magpie',
-        options: ['Magpie', 'Flamingo', 'Parrot'],
+        options: ['Flamingo', 'Magpie', 'Parrot'],
       },
       {
         question: 'Which bird is often associated with the ocean and fishing?',
         correctAnswer: 'Seagull',
-        options: ['Seagull', 'Chicken', 'Woodpecker'],
+        options: ['Seagull', 'Woodpecker', 'Chicken'],
       },
       {
         question: 'Which bird is known for its ability to hover in the air?',
@@ -130,7 +130,7 @@ export const easyLevel = [
       {
         question: 'Which bird is known for its distinctive crest on its head?',
         correctAnswer: 'Cockatoo',
-        options: ['Cockatoo', 'Pigeon', 'Duck'],
+        options: ['Pigeon', 'Cockatoo', 'Duck'],
       },
       {
         question: 'Which bird is often associated with the desert?',
@@ -141,17 +141,17 @@ export const easyLevel = [
         question:
           'Which bird is known for its ability to imitate car alarms and other sounds?',
         correctAnswer: 'Mockingbird',
-        options: ['Mockingbird', 'Ostrich', 'Flamingo'],
+        options: ['Flamingo', 'Mockingbird', 'Ostrich'],
       },
       {
         question: 'Which bird is known for its bright blue feathers?',
         correctAnswer: 'Blue Jay',
-        options: ['Blue Jay', 'Crow', 'Sparrow'],
+        options: ['Crow', 'Blue Jay', 'Sparrow'],
       },
       {
         question: 'Which bird is often associated with Halloween?',
         correctAnswer: 'Raven',
-        options: ['Raven', 'Flamingo', 'Hummingbird'],
+        options: ['Hummingbird', 'Raven', 'Flamingo'],
       },
       {
         question:
@@ -168,7 +168,7 @@ export const easyLevel = [
       {
         question: 'Which bird is often seen bobbing its head while walking?',
         correctAnswer: 'Pigeon',
-        options: ['Pigeon', 'Eagle', 'Hummingbird'],
+        options: ['Eagle', 'Pigeon', 'Hummingbird'],
       },
       {
         question: "Which bird is known for its distinctive 'laughing' call?",
@@ -179,7 +179,7 @@ export const easyLevel = [
         question:
           'Which bird is known for its ability to swim underwater to catch fish?',
         correctAnswer: 'Cormorant',
-        options: ['Cormorant', 'Ostrich', 'Parrot'],
+        options: ['Parrot', 'Cormorant', 'Ostrich'],
       },
     ],
   },
@@ -211,35 +211,35 @@ export const easyLevel = [
         question:
           'Which bird is known for building the largest nest of any bird?',
         correctAnswer: 'Eagle',
-        options: ['Eagle', 'Robin', 'Hummingbird'],
+        options: ['Robin', 'Eagle', 'Hummingbird'],
       },
       {
         question: "Which bird is often associated with the phrase 'Nevermore'?",
         correctAnswer: 'Raven',
-        options: ['Raven', 'Sparrow', 'Duck'],
+        options: ['Sparrow', 'Duck', 'Raven'],
       },
       {
         question:
           'Which bird is known for its ability to mimic the sounds of other birds?',
         correctAnswer: 'Lyrebird',
-        options: ['Lyrebird', 'Penguin', 'Flamingo'],
+        options: ['Penguin', 'Flamingo', 'Lyrebird'],
       },
       {
         question: "Which bird is known for its distinctive 'honk' sound?",
         correctAnswer: 'Goose',
-        options: ['Goose', 'Sparrow', 'Hummingbird'],
+        options: ['Sparrow', 'Goose', 'Hummingbird'],
       },
       {
         question:
           'Which bird is often associated with the delivery of mail in the Harry Potter series?',
         correctAnswer: 'Owl',
-        options: ['Owl', 'Eagle', 'Pigeon'],
+        options: ['Eagle', 'Owl', 'Pigeon'],
       },
       {
         question:
           'Which bird is known for its ability to fly at high altitudes?',
         correctAnswer: 'Condor',
-        options: ['Condor', 'Penguin', 'Chicken'],
+        options: ['Penguin', 'Chicken', 'Condor'],
       },
       {
         question: 'Which bird is often depicted on the Thanksgiving table?',
@@ -259,13 +259,13 @@ export const easyLevel = [
         question:
           'Which bird is known for its long, thin legs and pink feathers?',
         correctAnswer: 'Flamingo',
-        options: ['Flamingo', 'Penguin', 'Eagle'],
+        options: ['Penguin', 'Flamingo', 'Eagle'],
       },
       {
         question:
           "Which bird is often associated with the phrase 'Polly wants a cracker'?",
         correctAnswer: 'Parrot',
-        options: ['Parrot', 'Owl', 'Pigeon'],
+        options: ['Owl', 'Parrot', 'Pigeon'],
       },
       {
         question:
@@ -276,18 +276,18 @@ export const easyLevel = [
       {
         question: "Which bird is known for its distinctive 'cuckoo' call?",
         correctAnswer: 'Cuckoo',
-        options: ['Cuckoo', 'Robin', 'Seagull'],
+        options: ['Robin', 'Seagull', 'Cuckoo'],
       },
       {
         question: 'Which bird is often associated with the sport of falconry?',
         correctAnswer: 'Falcon',
-        options: ['Falcon', 'Penguin', 'Flamingo'],
+        options: ['Penguin', 'Falcon', 'Flamingo'],
       },
       {
         question:
           'Which bird is known for its ability to store food in its expandable throat pouch?',
         correctAnswer: 'Pelican',
-        options: ['Pelican', 'Sparrow', 'Owl'],
+        options: ['Sparrow', 'Owl', 'Pelican'],
       },
       {
         question:
@@ -303,7 +303,7 @@ export const easyLevel = [
       {
         question: 'Which bird is known for its ability to walk on water?',
         correctAnswer: 'Jacana',
-        options: ['Jacana', 'Penguin', 'Ostrich'],
+        options: ['Penguin', 'Jacana', 'Ostrich'],
       },
       {
         question:
@@ -323,24 +323,24 @@ export const easyLevel = [
       {
         question: "Which bird is known for its distinctive 'ribbit' sound?",
         correctAnswer: 'Frog',
-        options: ['Frog', 'Sparrow', 'Duck'],
+        options: ['Sparrow', 'Frog', 'Duck'],
       },
       {
         question:
           "Which bird is often associated with the phrase 'wise old...'?",
         correctAnswer: 'Owl',
-        options: ['Owl', 'Eagle', 'Parrot'],
+        options: ['Eagle', 'Parrot', 'Owl'],
       },
       {
         question:
           'Which bird is known for its ability to run on water when taking off?',
         correctAnswer: 'Duck',
-        options: ['Duck', 'Penguin', 'Ostrich'],
+        options: ['Penguin', 'Duck', 'Ostrich'],
       },
       {
         question: 'Which bird is often depicted carrying an olive branch?',
         correctAnswer: 'Dove',
-        options: ['Dove', 'Hawk', 'Sparrow'],
+        options: ['Hawk', 'Dove', 'Sparrow'],
       },
       {
         question:
@@ -363,7 +363,7 @@ export const easyLevel = [
         question:
           'Which bird is often depicted on the logo of the Twitter social media platform?',
         correctAnswer: 'Bluebird',
-        options: ['Bluebird', 'Eagle', 'Sparrow'],
+        options: ['Eagle', 'Sparrow', 'Bluebird'],
       },
       {
         question:
@@ -375,7 +375,7 @@ export const easyLevel = [
         question:
           "Which bird is often associated with the phrase 'proud as a...'?",
         correctAnswer: 'Peacock',
-        options: ['Peacock', 'Sparrow', 'Duck'],
+        options: ['Sparrow', 'Peacock', 'Duck'],
       },
     ],
   },
@@ -390,7 +390,7 @@ export const easyLevel = [
         question:
           'Which bird is known for its ability to mimic human speech and other sounds?',
         correctAnswer: 'Parrot',
-        options: ['Parrot', 'Eagle', 'Penguin'],
+        options: ['Eagle', 'Penguin', 'Parrot'],
       },
       {
         question:
@@ -406,7 +406,7 @@ export const easyLevel = [
       {
         question: 'Which bird is often depicted on the Thanksgiving table?',
         correctAnswer: 'Turkey',
-        options: ['Turkey', 'Duck', 'Goose'],
+        options: ['Duck', 'Turkey', 'Goose'],
       },
       {
         question:
@@ -418,17 +418,17 @@ export const easyLevel = [
         question:
           "Which bird is often associated with the phrase 'like a duck to water'?",
         correctAnswer: 'Duck',
-        options: ['Duck', 'Sparrow', 'Penguin'],
+        options: ['Sparrow', 'Penguin', 'Duck'],
       },
       {
         question: 'Which bird is known for its distinctive red breast?',
         correctAnswer: 'Robin',
-        options: ['Robin', 'Sparrow', 'Blue Jay'],
+        options: ['Sparrow', 'Robin', 'Blue Jay'],
       },
       {
         question: 'Which bird is often depicted as a symbol of freedom?',
         correctAnswer: 'Eagle',
-        options: ['Eagle', 'Chicken', 'Penguin'],
+        options: ['Chicken', 'Eagle', 'Penguin'],
       },
       {
         question:
@@ -440,15 +440,16 @@ export const easyLevel = [
         question:
           "Which bird is often associated with the phrase 'silly goose'?",
         correctAnswer: 'Goose',
-        options: ['Goose', 'Duck', 'Chicken'],
+        options: ['Duck', 'Chicken', 'Goose'],
       },
     ],
   },
 ];
 
 export const hardLevel = [
-  {image:
-    'https://img.freepik.com/free-photo/dark-scene-crow-nature_23-2151370464.jpg?t=st=1726138867~exp=1726142467~hmac=ad1df59fdc32d2109acdafa85b7500a7d9268724a188a0e7c16efd545784eacc&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/dark-scene-crow-nature_23-2151370464.jpg?t=st=1726138867~exp=1726142467~hmac=ad1df59fdc32d2109acdafa85b7500a7d9268724a188a0e7c16efd545784eacc&w=826',
     active: true,
     score: 0,
     id: 'l1',
@@ -573,8 +574,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/photorealistic-hummingbird-outdoors-nature_23-2151474121.jpg?t=st=1726138916~exp=1726142516~hmac=0a103604f34c9397a4926f8d3cba3815df4ba5b70654bfc52d925641583b3ed8&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/photorealistic-hummingbird-outdoors-nature_23-2151474121.jpg?t=st=1726138916~exp=1726142516~hmac=0a103604f34c9397a4926f8d3cba3815df4ba5b70654bfc52d925641583b3ed8&w=826',
     active: true,
     score: 0,
     id: 'l2',
@@ -704,8 +706,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/view-wild-bird_23-2150793397.jpg?t=st=1726138932~exp=1726142532~hmac=47d948d0f942696e4a7ae03a35633e9661fa3edc7a28b307e6430153d013f74f&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/view-wild-bird_23-2150793397.jpg?t=st=1726138932~exp=1726142532~hmac=47d948d0f942696e4a7ae03a35633e9661fa3edc7a28b307e6430153d013f74f&w=826',
     active: false,
     score: 0,
     id: 'l3',
@@ -835,8 +838,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/close-up-cute-bird-woods_23-2149063259.jpg?t=st=1726138943~exp=1726142543~hmac=f9b4dcf3abc3ebc600463312b92ea851e382dd938fd25fd1c73407826555d944&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/close-up-cute-bird-woods_23-2149063259.jpg?t=st=1726138943~exp=1726142543~hmac=f9b4dcf3abc3ebc600463312b92ea851e382dd938fd25fd1c73407826555d944&w=826',
     active: false,
     score: 0,
     id: 'l4',
@@ -917,8 +921,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984555.jpg?t=st=1726138959~exp=1726142559~hmac=ff274b8f7bcdc4fcd6785e26ad43ef88d54e196115598af3f3c72651e44f092f&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984555.jpg?t=st=1726138959~exp=1726142559~hmac=ff274b8f7bcdc4fcd6785e26ad43ef88d54e196115598af3f3c72651e44f092f&w=826',
     active: false,
     score: 0,
     id: 'l5',
@@ -1041,8 +1046,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984617.jpg?t=st=1726138978~exp=1726142578~hmac=49898cc0325ee6a34a67eaafaf9c760d27466c17c481128919cb8c9085ce7f51&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984617.jpg?t=st=1726138978~exp=1726142578~hmac=49898cc0325ee6a34a67eaafaf9c760d27466c17c481128919cb8c9085ce7f51&w=826',
     active: false,
     score: 0,
     id: 'l6',
@@ -1151,8 +1157,9 @@ export const hardLevel = [
       },
     ],
   },
-  {image:
-    'https://img.freepik.com/free-photo/view-wild-bird_23-2150793305.jpg?t=st=1726138995~exp=1726142595~hmac=7dd14ecd4ccbf0617a6b6350f3ea2223af672dc89406644a79c5c845fb2b5b0d&w=826',
+  {
+    image:
+      'https://img.freepik.com/free-photo/view-wild-bird_23-2150793305.jpg?t=st=1726138995~exp=1726142595~hmac=7dd14ecd4ccbf0617a6b6350f3ea2223af672dc89406644a79c5c845fb2b5b0d&w=826',
     active: false,
     score: 0,
     id: 'l7',
