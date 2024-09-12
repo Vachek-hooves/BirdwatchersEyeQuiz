@@ -1,5 +1,7 @@
 export const easyLevel = [
   {
+    image:
+      'https://img.freepik.com/free-photo/dark-scene-crow-nature_23-2151370464.jpg?t=st=1726138867~exp=1726142467~hmac=ad1df59fdc32d2109acdafa85b7500a7d9268724a188a0e7c16efd545784eacc&w=826',
     active: true,
     score: 0,
     id: 'e1',
@@ -58,6 +60,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/photorealistic-hummingbird-outdoors-nature_23-2151474121.jpg?t=st=1726138916~exp=1726142516~hmac=0a103604f34c9397a4926f8d3cba3815df4ba5b70654bfc52d925641583b3ed8&w=826',
     active: true,
     score: 0,
     id: 'e2',
@@ -117,6 +121,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/view-wild-bird_23-2150793397.jpg?t=st=1726138932~exp=1726142532~hmac=47d948d0f942696e4a7ae03a35633e9661fa3edc7a28b307e6430153d013f74f&w=826',
     active: false,
     score: 0,
     id: 'e3',
@@ -178,6 +184,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/close-up-cute-bird-woods_23-2149063259.jpg?t=st=1726138943~exp=1726142543~hmac=f9b4dcf3abc3ebc600463312b92ea851e382dd938fd25fd1c73407826555d944&w=826',
     active: false,
     score: 0,
     id: 'e4',
@@ -241,6 +249,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984555.jpg?t=st=1726138959~exp=1726142559~hmac=ff274b8f7bcdc4fcd6785e26ad43ef88d54e196115598af3f3c72651e44f092f&w=826',
     active: false,
     score: 0,
     id: 'e5',
@@ -304,6 +314,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/affectionate-birds-sitting-together-branch_23-2150984617.jpg?t=st=1726138978~exp=1726142578~hmac=49898cc0325ee6a34a67eaafaf9c760d27466c17c481128919cb8c9085ce7f51&w=826',
     active: false,
     score: 0,
     id: 'e6',
@@ -368,6 +380,8 @@ export const easyLevel = [
     ],
   },
   {
+    image:
+      'https://img.freepik.com/free-photo/view-wild-bird_23-2150793305.jpg?t=st=1726138995~exp=1726142595~hmac=7dd14ecd4ccbf0617a6b6350f3ea2223af672dc89406644a79c5c845fb2b5b0d&w=826',
     active: false,
     score: 0,
     id: 'e7',
