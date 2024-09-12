@@ -186,9 +186,10 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     padding: 10,
-    fontSize: 18,
-    color: COLOR.matteYellow,
-    fontWeight: '600',
+    fontSize: 24,
+    color: COLOR.lightGreen,
+    fontWeight: '700',
+    letterSpacing:2
     
   },
   errorText: {
@@ -263,6 +264,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     paddingHorizontal: 10,
+    
   },
   inputIcon: {
     marginRight: 10,
