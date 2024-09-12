@@ -83,7 +83,7 @@ export default QuizQuestion;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 18,
+    fontSize: 24,
     color: '#fff',
     textAlign: 'center',
   },
