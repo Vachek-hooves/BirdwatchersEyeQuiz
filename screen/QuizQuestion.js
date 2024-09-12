@@ -1,17 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
-import {ImagedLayout} from '../components/AppLayout';
-import {useBirdContext} from '../store/bird_context';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
+import { ImagedLayout } from '../components/AppLayout';
+import { useBirdContext } from '../store/bird_context';
 
-const QuizQuestion = ({route}) => {
-  const {quizId, difficulty} = route.params;
-  const {chooseQuizMode} = useBirdContext();
+const QuizQuestion = ({ route }) => {
+  const { quizId, difficulty } = route.params;
+  const { chooseQuizMode } = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -34,7 +28,7 @@ const QuizQuestion = ({route}) => {
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
 
-  const handleAnswer = selectedAnswer => {
+  const handleAnswer = (selectedAnswer) => {
     if (isAnswered) return;
 
     setSelectedAnswer(selectedAnswer);
@@ -52,40 +46,53 @@ const QuizQuestion = ({route}) => {
         setIsAnswered(false);
       } else {
         // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        console.log(
-          'Quiz finished. Final score:',
-          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
-        );
+        console.log('Quiz finished. Final score:', score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0));
       }
     }, 2000); // 1.5 second delay
   };
 
-  const getButtonStyle = option => {
+  const getButtonStyle = (option) => {
     if (!isAnswered) return styles.answerButton;
-    if (option === currentQuestion.correctAnswer)
-      return [styles.answerButton, styles.correctAnswer];
-    if (option === selectedAnswer)
-      return [styles.answerButton, styles.wrongAnswer];
+    if (option === currentQuestion.correctAnswer) return [styles.answerButton, styles.correctAnswer];
+    if (option === selectedAnswer) return [styles.answerButton, styles.wrongAnswer];
     return [styles.answerButton, styles.disabledAnswer];
+  };
+
+  const getTextStyle = (option) => {
+    if (!isAnswered) return styles.answerText;
+    if (option === currentQuestion.correctAnswer) return [styles.answerText, styles.correctAnswer];
+    if (option === selectedAnswer) return [styles.answerText, styles.wrongAnswer];
+    return [styles.answerText, styles.disabledAnswer];
   };
 
   return (
     <ImagedLayout blur={300}>
-      <View style={styles.container}>
-        <Text style={styles.scoreText}>
-          Score: {score}/{currentQuestionIndex + 1}
-        </Text>
-        <Text style={styles.questionText}>{currentQuestion.question}</Text>
-        {currentQuestion.options.map((option, index) => (
-          <TouchableOpacity
-            key={index}
-            style={getButtonStyle(option)}
-            onPress={() => handleAnswer(option)}
-            disabled={isAnswered}>
-            <Text style={styles.answerText}>{option}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.scoreContainer}>
+          <View style={styles.scoreWrapper}>
+            <Text style={styles.scoreLabel}>Score:</Text>
+            <Text style={styles.scoreValue}>{score}</Text>
+          </View>
+          <View style={styles.progressWrapper}>
+            <Text style={styles.progressLabel}>Question:</Text>
+            <Text style={styles.progressValue}>{currentQuestionIndex + 1}</Text>
+            <Text style={styles.progressTotal}>/ {quizData.questions.length}</Text>
+          </View>
+        </View>
+        <View style={styles.questionContainer}>
+          <Text style={styles.questionText}>{currentQuestion.question}</Text>
+          {currentQuestion.options.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              style={getButtonStyle(option)}
+              onPress={() => handleAnswer(option)}
+              disabled={isAnswered}
+            >
+              <Text style={getTextStyle(option)}>{option}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </SafeAreaView>
     </ImagedLayout>
   );
 };
@@ -93,9 +100,59 @@ const QuizQuestion = ({route}) => {
 export default QuizQuestion;
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
+  scoreContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  scoreWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  scoreLabel: {
+    fontSize: 18,
+    color: '#fff',
+    marginRight: 5,
+  },
+  scoreValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  progressWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  progressLabel: {
+    fontSize: 18,
+    color: '#fff',
+    marginRight: 5,
+  },
+  progressValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  progressTotal: {
+    fontSize: 18,
+    color: '#fff',
+    marginLeft: 2,
+  },
+  questionContainer: {
+    // flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
   container: {
     flex: 1,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
   },
@@ -120,7 +177,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 8,
@@ -128,7 +185,7 @@ const styles = StyleSheet.create({
   correctAnswer: {
     backgroundColor: 'rgba(0, 255, 0, 0.3)',
     shadowColor: 'rgba(0, 255, 0, 0.5)',
-    shadowOffset: {width: 3, height: 9},
+    shadowOffset: { width: 3, height: 9 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -136,7 +193,7 @@ const styles = StyleSheet.create({
   wrongAnswer: {
     backgroundColor: 'rgba(255, 0, 0, 0.3)',
     shadowColor: 'rgba(255, 0, 0, 0.5)',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -145,7 +202,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 24,
+    fontSize: 18,
     color: '#fff',
     textAlign: 'center',
   },
