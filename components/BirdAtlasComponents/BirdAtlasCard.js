@@ -12,17 +12,22 @@ import {
 } from 'react-native';
 import {ATLAS} from '../../data/quiz_data';
 import {COLOR} from '../../constants/colors';
+import {useBirdContext} from '../../store/bird_context';
+
 const {width, height} = Dimensions.get('window');
 
 const BirdAtlasCard = () => {
   const [selectedBird, setSelectedBird] = useState(null);
+  const {customBirds} = useBirdContext();
+
+  const allBirds = [...customBirds, ...ATLAS];
 
   return (
     <View style={styles.container}>
       <ScrollView
         contentContainerStyle={styles.cardContainer}
         showsVerticalScrollIndicator={false}>
-        {ATLAS.map(bird => (
+        {allBirds.map(bird => (
           <BirdCard
             key={bird.id}
             bird={bird}
