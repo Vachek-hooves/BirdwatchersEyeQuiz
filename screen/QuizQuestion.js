@@ -1,8 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
 import {ImagedLayout} from '../components/AppLayout';
 
-const QuizQuestion = () => {
+const QuizQuestion = ({route}) => {
+  const {quizId, difficulty} = route.params;
+
   return <ImagedLayout blur={300}></ImagedLayout>;
 };
 
