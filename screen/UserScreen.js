@@ -47,10 +47,11 @@ const UserScreen = () => {
       setNameError('Name must be at least 3 characters long');
       return;
     }
-    if (!photo) {
-      Alert.alert('Photo Required', 'Please select a profile photo');
-      return;
-    }
+    // Remove the photo check
+    // if (!photo) {
+    //   Alert.alert('Photo Required', 'Please select a profile photo');
+    //   return;
+    // }
 
     const userProfile = {name: name.trim(), photo};
     try {
@@ -94,12 +95,16 @@ const UserScreen = () => {
 
   const renderProfileView = () => (
     <>
-      {photo && (
+      {photo ? (
         <Image
           source={{uri: photo}}
           style={styles.imageSaved}
           resizeMode="cover"
         />
+      ) : (
+        <View style={[styles.imageSaved, styles.placeholderImage]}>
+          <Text style={styles.placeholderText}>No Photo</Text>
+        </View>
       )}
       <Text style={styles.nameSaved}>{name}</Text>
       <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
@@ -213,6 +218,16 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginBottom: 20,
     alignSelf: 'center',
+  },
+  placeholderImage: {
+    backgroundColor: COLOR.lightGreen + '50',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    color: COLOR.milk,
+    fontSize: 18,
+    fontWeight: '600',
   },
   editButton: {
     flexDirection: 'row',
