@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     position: 'absolute',
-    bottom: 150,
+    bottom: 170,
     left: 10,
     flexDirection: 'column',
     gap: 20,
