@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import {useBirdContext} from '../store/bird_context';
+import {ImagedLayout} from '../components/AppLayout';
 
 const QuizPlayScreen = ({navigation, route}) => {
   const {chooseQuizMode} = useBirdContext();
@@ -7,11 +8,7 @@ const QuizPlayScreen = ({navigation, route}) => {
   const quizData = chooseQuizMode(difficulty);
   console.log(quizData);
 
-  return (
-    <View>
-      <Text>QuizPlayScreen</Text>
-    </View>
-  );
+  return <ImagedLayout></ImagedLayout>;
 };
 
 export default QuizPlayScreen;
