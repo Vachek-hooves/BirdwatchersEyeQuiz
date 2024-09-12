@@ -130,7 +130,7 @@ const UserScreen = () => {
             setName(text);
             setNameError('');
           }}
-          placeholderTextColor={COLOR.green}
+          placeholderTextColor={COLOR.milk}
         />
       </View>
       {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
@@ -189,6 +189,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: COLOR.matteYellow,
     fontWeight: '600',
+    
   },
   errorText: {
     color: 'red',
@@ -258,7 +259,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 3,
-    borderColor: COLOR.milk,
+    borderColor: COLOR.lightGreen,
     borderRadius: 10,
     marginBottom: 10,
     paddingHorizontal: 10,
