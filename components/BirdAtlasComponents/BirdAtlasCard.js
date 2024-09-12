@@ -104,7 +104,9 @@ const BirdCard = ({bird, onPress, onDelete}) => (
 const BirdModal = ({bird, visible, onClose, onDelete}) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
     <View style={styles.modalContainer}>
-      <ScrollView style={styles.modalContent}>
+      <ScrollView
+        style={styles.modalContent}
+        showsVerticalScrollIndicator={false}>
         <Image
           source={
             typeof bird.image === 'string' ? {uri: bird.image} : bird.image
@@ -131,6 +133,7 @@ const BirdModal = ({bird, visible, onClose, onDelete}) => (
             <Text style={styles.deleteButtonText}>Delete</Text>
           </TouchableOpacity>
         )}
+        <View style={{height: 50}}></View>
       </ScrollView>
     </View>
   </Modal>

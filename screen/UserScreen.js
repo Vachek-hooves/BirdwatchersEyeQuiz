@@ -99,7 +99,7 @@ const UserScreen = () => {
             setName(text);
             setNameError('');
           }}
-          placeholderTextColor={COLOR.matteYellow + '90'}
+          placeholderTextColor={COLOR.green}
         />
       </View>
       {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
