@@ -1,8 +1,8 @@
 import {Text, TouchableOpacity, Alert} from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
+import {COLOR} from '../../../constants/colors';
 
 const ImagePicker = ({handleImage, style, children, btnStyle}) => {
-
   const response = response => {
     if (response.didCancel) {
       Alert.alert('Operation canceled');
@@ -23,7 +23,9 @@ const ImagePicker = ({handleImage, style, children, btnStyle}) => {
 
   return (
     <TouchableOpacity style={[btnStyle]} onPress={() => library()}>
-      <Text style={[style, {textAlign: 'center'}]}>{children}</Text>
+      <Text style={[style, {textAlign: 'center', color: 'black'}]}>
+        {children}
+      </Text>
     </TouchableOpacity>
   );
 };

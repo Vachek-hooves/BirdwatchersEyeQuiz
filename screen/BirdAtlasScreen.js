@@ -6,6 +6,7 @@ import {
   Modal,
   ScrollView,
   TextInput,
+  Image,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
 import {ImagedLayout} from '../components/AppLayout';
@@ -13,6 +14,7 @@ import BirdAtlasCard from '../components/BirdAtlasComponents/BirdAtlasCard';
 import {BirdContext} from '../store/bird_context';
 import {useBirdContext} from '../store/bird_context';
 import {COLOR} from '../constants/colors';
+import ImagePicker from '../components/ui/interface/ImagePicker';
 
 const DEFAULT_IMAGE = require('../assets/img/cardImg/NoImage.jpg');
 
@@ -33,10 +35,10 @@ const BirdAtlasScreen = () => {
   };
 
   const handleSaveBird = () => {
-    const birdWithId = { 
-      ...newBird, 
+    const birdWithId = {
+      ...newBird,
       id: Date.now().toString(),
-      image: newBird.image || DEFAULT_IMAGE
+      image: newBird.image || DEFAULT_IMAGE,
     };
     addCustomBird(birdWithId);
     setModalVisible(false);
@@ -48,6 +50,12 @@ const BirdAtlasScreen = () => {
       habitat: '',
       characteristics: '',
     });
+  };
+
+  const handleImage = images => {
+    if (images && images.length > 0) {
+      setNewBird({...newBird, image: images[0]});
+    }
   };
   return (
     <ImagedLayout blur={9}>
@@ -64,12 +72,18 @@ const BirdAtlasScreen = () => {
         <View style={styles.modalContainer}>
           <ScrollView style={styles.modalContent}>
             <Text style={styles.modalTitle}>Add New Bird</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Image URL"
-              value={newBird.image}
-              onChangeText={text => setNewBird({...newBird, image: text})}
-            />
+            <ImagePicker
+              handleImage={handleImage}
+              style={styles.imagePicker}
+              btnStyle={styles.imagePickerBtn}>
+              {newBird.image ? 'Change Image' : 'Select Image'}
+            </ImagePicker>
+            {newBird.image && (
+              <Image
+                source={{uri: newBird.image}}
+                style={styles.previewImage}
+              />
+            )}
             <TextInput
               style={styles.input}
               placeholder="Name"
@@ -186,5 +200,22 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  imagePicker: {
+    color: COLOR.milk,
+    fontSize: 16,
+  },
+  imagePickerBtn: {
+    backgroundColor: COLOR.milk,
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  previewImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    marginBottom: 10,
+    borderRadius: 5,
   },
 });
