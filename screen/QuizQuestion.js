@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
   },
   wrongAnswer: {
     backgroundColor: 'rgba(255, 0, 0, 0.3)',
-    shadowColor: 'rgba(255, 0, 0, 0.5)',
+    shadowColor: 'rgba(255, 0, 0, 0.4)',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.5,
     shadowRadius: 5,
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   },
   wrongAnswerText: {
     fontWeight: 'bold',
-    color: '#ff0000', // Bright red for wrong answer text
+    // color: '#ff0000', // Bright red for wrong answer text
   },
   disabledAnswerText: {
     color: 'rgba(255, 255, 255, 0.7)',
