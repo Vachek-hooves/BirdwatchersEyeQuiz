@@ -5,6 +5,7 @@ import {
   BirdAtlasScreen,
   IntroScreen,
   MapScreen,
+  QuizModeScreen,
   QuizScreen,
   UserScreen,
 } from './screen';
@@ -95,6 +96,7 @@ function App() {
           }}>
           <Stack.Screen name="IntroScreen" component={IntroScreen} />
           <Stack.Screen name="TabMenuRender" component={TabMenu} />
+          <Stack.Screen name="QuizModeScreen" component={QuizModeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </BirdProvider>
