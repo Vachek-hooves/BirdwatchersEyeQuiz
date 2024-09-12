@@ -9,7 +9,7 @@ import {
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({route}) => {
+const QuizQuestion = ({route, navigation}) => {
   const {quizId, difficulty} = route.params;
   const {chooseQuizMode} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -71,10 +71,8 @@ const QuizQuestion = ({route}) => {
 
   const getTextStyle = option => {
     if (!isAnswered) return styles.answerText;
-    if (option === currentQuestion.correctAnswer)
-      return [styles.answerText, styles.correctAnswerText];
-    if (option === selectedAnswer)
-      return [styles.answerText, styles.wrongAnswerText];
+    if (option === currentQuestion.correctAnswer || option === selectedAnswer)
+      return [styles.answerText, styles.selectedAnswerText];
     return [styles.answerText, styles.disabledAnswerText];
   };
 
@@ -199,7 +197,7 @@ const styles = StyleSheet.create({
   correctAnswer: {
     backgroundColor: 'rgba(0, 255, 0, 0.3)',
     shadowColor: 'rgba(0, 255, 0, 0.5)',
-    shadowOffset: {width: 3, height: 9},
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -220,16 +218,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
-  correctAnswerText: {
+  selectedAnswerText: {
     fontWeight: 'bold',
-    color: '#00ff00', // Bright green for correct answer text
-  },
-  wrongAnswerText: {
-    fontWeight: 'bold',
-    color: '#ff0000', // Bright red for wrong answer text
   },
   disabledAnswerText: {
-    color: 'rgba(255, 255, 255, 0.7)',
+    opacity: 0.7,
   },
   scoreText: {
     fontSize: 18,
