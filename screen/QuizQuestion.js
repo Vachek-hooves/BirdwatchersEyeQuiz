@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
-import { ImagedLayout } from '../components/AppLayout';
-import { useBirdContext } from '../store/bird_context';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import {ImagedLayout} from '../components/AppLayout';
+import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({ route }) => {
-  const { quizId, difficulty } = route.params;
-  const { chooseQuizMode } = useBirdContext();
+const QuizQuestion = ({route}) => {
+  const {quizId, difficulty} = route.params;
+  const {chooseQuizMode} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -28,7 +34,7 @@ const QuizQuestion = ({ route }) => {
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
 
-  const handleAnswer = (selectedAnswer) => {
+  const handleAnswer = selectedAnswer => {
     if (isAnswered) return;
 
     setSelectedAnswer(selectedAnswer);
@@ -46,33 +52,39 @@ const QuizQuestion = ({ route }) => {
         setIsAnswered(false);
       } else {
         // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        console.log('Quiz finished. Final score:', score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0));
+        console.log(
+          'Quiz finished. Final score:',
+          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
+        );
       }
     }, 2000); // 1.5 second delay
   };
 
-  const getButtonStyle = (option) => {
+  const getButtonStyle = option => {
     if (!isAnswered) return styles.answerButton;
-    if (option === currentQuestion.correctAnswer) return [styles.answerButton, styles.correctAnswer];
-    if (option === selectedAnswer) return [styles.answerButton, styles.wrongAnswer];
+    if (option === currentQuestion.correctAnswer)
+      return [styles.answerButton, styles.correctAnswer];
+    if (option === selectedAnswer)
+      return [styles.answerButton, styles.wrongAnswer];
     return [styles.answerButton, styles.disabledAnswer];
   };
 
   return (
     <ImagedLayout blur={300}>
       <View style={styles.container}>
+        <Text style={styles.scoreText}>
+          Score: {score}/{currentQuestionIndex + 1}
+        </Text>
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
         {currentQuestion.options.map((option, index) => (
           <TouchableOpacity
             key={index}
             style={getButtonStyle(option)}
             onPress={() => handleAnswer(option)}
-            disabled={isAnswered}
-          >
+            disabled={isAnswered}>
             <Text style={styles.answerText}>{option}</Text>
           </TouchableOpacity>
         ))}
-        <Text style={styles.scoreText}>Score: {score}/{currentQuestionIndex + 1}</Text>
       </View>
     </ImagedLayout>
   );
@@ -108,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 8,
@@ -116,7 +128,7 @@ const styles = StyleSheet.create({
   correctAnswer: {
     backgroundColor: 'rgba(0, 255, 0, 0.3)',
     shadowColor: 'rgba(0, 255, 0, 0.5)',
-    shadowOffset: { width: 3, height: 9 },
+    shadowOffset: {width: 3, height: 9},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -124,7 +136,7 @@ const styles = StyleSheet.create({
   wrongAnswer: {
     backgroundColor: 'rgba(255, 0, 0, 0.3)',
     shadowColor: 'rgba(255, 0, 0, 0.5)',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
