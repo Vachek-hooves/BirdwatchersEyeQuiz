@@ -88,6 +88,52 @@ export const BirdProvider = ({children}) => {
         return [];
     }
   };
+
+  const updateQuizScore = async (mode, quizId, score) => {
+    try {
+      let updatedQuizzes;
+      if (mode === 'easy') {
+        updatedQuizzes = easy.map(quiz => {
+          if (quiz.id === quizId) {
+            return { ...quiz, score: Math.max(quiz.score, score) };
+          }
+          return quiz;
+        });
+
+        // Unlock next level if score is 8 or more
+        if (score >= 8) {
+          const nextQuizIndex = updatedQuizzes.findIndex(quiz => quiz.id === quizId) + 1;
+          if (nextQuizIndex < updatedQuizzes.length) {
+            updatedQuizzes[nextQuizIndex].active = true;
+          }
+        }
+
+        setEasy(updatedQuizzes);
+        await AsyncStorage.setItem('easyLevel', JSON.stringify(updatedQuizzes));
+      } else if (mode === 'hard') {
+        updatedQuizzes = hard.map(quiz => {
+          if (quiz.id === quizId) {
+            return { ...quiz, score: Math.max(quiz.score, score) };
+          }
+          return quiz;
+        });
+
+        // Unlock next level if score is 8 or more
+        if (score >= 8) {
+          const nextQuizIndex = updatedQuizzes.findIndex(quiz => quiz.id === quizId) + 1;
+          if (nextQuizIndex < updatedQuizzes.length) {
+            updatedQuizzes[nextQuizIndex].active = true;
+          }
+        }
+
+        setHard(updatedQuizzes);
+        await AsyncStorage.setItem('hardLevel', JSON.stringify(updatedQuizzes));
+      }
+    } catch (error) {
+      console.error('Error updating quiz score:', error);
+    }
+  };
+
   const value = {
     easy,
     hard,
@@ -95,6 +141,7 @@ export const BirdProvider = ({children}) => {
     addCustomBird,
     deleteCustomBird,
     chooseQuizMode,
+    updateQuizScore,
   };
   return <BirdContext.Provider value={value}>{children}</BirdContext.Provider>;
 };

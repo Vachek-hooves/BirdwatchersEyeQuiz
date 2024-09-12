@@ -5,13 +5,14 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
+  Alert
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({route}) => {
+const QuizQuestion = ({route, navigation}) => {
   const {quizId, difficulty} = route.params;
-  const {chooseQuizMode} = useBirdContext();
+  const {chooseQuizMode, updateQuizScore} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -41,7 +42,7 @@ const QuizQuestion = ({route}) => {
     setIsAnswered(true);
 
     if (selectedAnswer === currentQuestion.correctAnswer) {
-      setScore(score + 1);
+      setScore(prevScore => prevScore + 1);
     }
 
     // Move to next question after a short delay
@@ -52,12 +53,26 @@ const QuizQuestion = ({route}) => {
         setIsAnswered(false);
       } else {
         // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        console.log(
-          'Quiz finished. Final score:',
-          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
-        );
+        showQuizResults();
       }
-    }, 2000); // 1.5 second delay
+    }, 2000); // 2 second delay
+  };
+
+  const showQuizResults = () => {
+    const totalQuestions = quizData.questions.length;
+    const correctAnswers = quizData.questions.map(q => `${q.question}\nCorrect Answer: ${q.correctAnswer}`).join('\n\n');
+
+    // Update the quiz score in the context
+    updateQuizScore(difficulty, quizId, score);
+
+    Alert.alert(
+      "Quiz Finished",
+      `Your Score: ${score}/${totalQuestions}\n\nCorrect Answers:\n${correctAnswers}`,
+      [
+        { text: "OK", onPress: () => navigation.goBack() }
+      ],
+      { cancelable: false }
+    );
   };
 
   const getButtonStyle = option => {
@@ -182,7 +197,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   answerButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -216,7 +231,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 24,
+    fontSize: 28,
     color: '#fff',
     textAlign: 'center',
   },
