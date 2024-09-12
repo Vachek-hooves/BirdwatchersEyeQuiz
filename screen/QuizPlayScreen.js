@@ -1,7 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {StyleSheet, Text, View} from 'react-native';
 
-const QuizPlayScreen = () => {
+
+const QuizPlayScreen = ({navigation}) => {
+  const handleDifficultySelect = difficulty => {
+    navigation.navigate('QuizPlayScreen', {difficulty});
+  };
+  
   return (
     <View>
       <Text>QuizPlayScreen</Text>

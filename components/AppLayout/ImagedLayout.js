@@ -13,7 +13,7 @@ const ImagedLayout = ({children, source, style, blur}) => {
       style={[style, {flex: 1}]}
       blurRadius={blur}
       source={require('../../assets/img/bg/eagleDraw.jpg')}>
-      <SafeAreaView>{children}</SafeAreaView>
+      <SafeAreaView style={{flex:1}}>{children}</SafeAreaView>
     </ImageBackground>
   );
 };
