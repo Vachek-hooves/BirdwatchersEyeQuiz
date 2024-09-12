@@ -7,6 +7,7 @@ import {
   MapScreen,
   QuizModeScreen,
   QuizPlayScreen,
+  QuizQuestion,
   QuizScreen,
   UserScreen,
 } from './screen';
@@ -99,6 +100,7 @@ function App() {
           <Stack.Screen name="TabMenuRender" component={TabMenu} />
           <Stack.Screen name="QuizModeScreen" component={QuizModeScreen} />
           <Stack.Screen name="QuizPlayScreen" component={QuizPlayScreen} />
+          <Stack.Screen name="QuizQuestion" component={QuizQuestion} />
         </Stack.Navigator>
       </NavigationContainer>
     </BirdProvider>
