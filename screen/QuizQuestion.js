@@ -5,14 +5,13 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
-  Alert,
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({route, navigation}) => {
+const QuizQuestion = ({route}) => {
   const {quizId, difficulty} = route.params;
-  const {chooseQuizMode, updateQuizScore} = useBirdContext();
+  const {chooseQuizMode} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -41,9 +40,8 @@ const QuizQuestion = ({route, navigation}) => {
     setSelectedAnswer(selectedAnswer);
     setIsAnswered(true);
 
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    if (isCorrect) {
-      setScore(prevScore => prevScore + 1);
+    if (selectedAnswer === currentQuestion.correctAnswer) {
+      setScore(score + 1);
     }
 
     // Move to next question after a short delay
@@ -53,28 +51,13 @@ const QuizQuestion = ({route, navigation}) => {
         setSelectedAnswer(null);
         setIsAnswered(false);
       } else {
-        // Quiz finished, handle end of quiz
-        showQuizResults(isCorrect);
+        // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
+        console.log(
+          'Quiz finished. Final score:',
+          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
+        );
       }
-    }, 2000); // 2 second delay
-  };
-
-  const showQuizResults = (isLastAnswerCorrect) => {
-    const totalQuestions = quizData.questions.length;
-    const finalScore = isLastAnswerCorrect ? score + 1 : score;
-    const correctAnswers = quizData.questions.map(q => `${q.question}\nCorrect Answer: ${q.correctAnswer}`).join('\n\n');
-
-    // Update the quiz score in the context
-    updateQuizScore(difficulty, quizId, finalScore);
-
-    Alert.alert(
-      "Quiz Finished",
-      `Your Score: ${finalScore}/${totalQuestions}\n\nCorrect Answers:\n${correctAnswers}`,
-      [
-        { text: "OK", onPress: () => navigation.goBack() }
-      ],
-      { cancelable: false }
-    );
+    }, 2000); // 1.5 second delay
   };
 
   const getButtonStyle = option => {
@@ -89,10 +72,10 @@ const QuizQuestion = ({route, navigation}) => {
   const getTextStyle = option => {
     if (!isAnswered) return styles.answerText;
     if (option === currentQuestion.correctAnswer)
-      return [styles.answerText, styles.correctAnswer];
+      return [styles.answerText, styles.correctAnswerText];
     if (option === selectedAnswer)
-      return [styles.answerText, styles.wrongAnswer];
-    return [styles.answerText, styles.disabledAnswer];
+      return [styles.answerText, styles.wrongAnswerText];
+    return [styles.answerText, styles.disabledAnswerText];
   };
 
   return (
@@ -199,7 +182,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   answerButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -207,6 +189,7 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
@@ -233,9 +216,20 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 24,
+    fontSize: 23,
     color: '#fff',
     textAlign: 'center',
+  },
+  correctAnswerText: {
+    fontWeight: 'bold',
+    color: '#00ff00', // Bright green for correct answer text
+  },
+  wrongAnswerText: {
+    fontWeight: 'bold',
+    color: '#ff0000', // Bright red for wrong answer text
+  },
+  disabledAnswerText: {
+    color: 'rgba(255, 255, 255, 0.7)',
   },
   scoreText: {
     fontSize: 18,
