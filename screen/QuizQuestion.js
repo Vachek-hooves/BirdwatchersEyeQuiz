@@ -182,6 +182,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   answerButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -189,7 +190,6 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white for blur effect
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   correctAnswer: {
     backgroundColor: 'rgba(0, 255, 0, 0.3)',
     shadowColor: 'rgba(0, 255, 0, 0.5)',
-    shadowOffset: {width: 0, height: 4},
+    shadowOffset: {width: 3, height: 9},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -216,12 +216,9 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 26,
+    fontSize: 24,
     color: '#fff',
     textAlign: 'center',
-    fontWeight: '700',
-    borderRadius: 12,
-    overflow: 'hidden',
   },
   scoreText: {
     fontSize: 18,
