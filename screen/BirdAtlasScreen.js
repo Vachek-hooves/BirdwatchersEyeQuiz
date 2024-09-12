@@ -14,6 +14,8 @@ import {BirdContext} from '../store/bird_context';
 import {useBirdContext} from '../store/bird_context';
 import {COLOR} from '../constants/colors';
 
+const DEFAULT_IMAGE = require('../assets/img/cardImg/NoImage.jpg');
+
 const BirdAtlasScreen = () => {
   const {customBirds, addCustomBird} = useBirdContext();
   console.log(customBirds);
@@ -31,7 +33,11 @@ const BirdAtlasScreen = () => {
   };
 
   const handleSaveBird = () => {
-    const birdWithId = {...newBird, id: Date.now().toString()};
+    const birdWithId = { 
+      ...newBird, 
+      id: Date.now().toString(),
+      image: newBird.image || DEFAULT_IMAGE
+    };
     addCustomBird(birdWithId);
     setModalVisible(false);
     setNewBird({

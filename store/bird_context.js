@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const BirdContext = createContext({
   customBirds: [],
   addCustomBird: () => {},
+  deleteCustomBird: () => {},
 });
 
 export const BirdProvider = ({children}) => {
@@ -25,7 +26,7 @@ export const BirdProvider = ({children}) => {
 
   const addCustomBird = async newBird => {
     try {
-      const updatedBirds = [...customBirds, newBird];
+      const updatedBirds = [newBird, ...customBirds];
       setCustomBirds(updatedBirds);
       await AsyncStorage.setItem('customBirds', JSON.stringify(updatedBirds));
     } catch (error) {
@@ -33,9 +34,20 @@ export const BirdProvider = ({children}) => {
     }
   };
 
+  const deleteCustomBird = async id => {
+    try {
+      const updatedBirds = customBirds.filter(bird => bird.id !== id);
+      setCustomBirds(updatedBirds);
+      await AsyncStorage.setItem('customBirds', JSON.stringify(updatedBirds));
+    } catch (error) {
+      console.error('Error deleting custom bird:', error);
+    }
+  };
+
   const value = {
     customBirds,
     addCustomBird,
+    deleteCustomBird,
   };
   return <BirdContext.Provider value={value}>{children}</BirdContext.Provider>;
 };

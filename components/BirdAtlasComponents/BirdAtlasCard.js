@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Dimensions,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import {ATLAS} from '../../data/quiz_data';
 import {COLOR} from '../../constants/colors';
@@ -18,9 +19,31 @@ const {width, height} = Dimensions.get('window');
 
 const BirdAtlasCard = () => {
   const [selectedBird, setSelectedBird] = useState(null);
-  const {customBirds} = useBirdContext();
+  const {customBirds, deleteCustomBird} = useBirdContext();
 
   const allBirds = [...customBirds, ...ATLAS];
+
+  const handleDeleteBird = bird => {
+    Alert.alert(
+      'Delete Bird',
+      `Are you sure you want to delete ${bird.name}?`,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            deleteCustomBird(bird.id);
+            if (selectedBird && selectedBird.id === bird.id) {
+              setSelectedBird(null);
+            }
+          },
+        },
+      ],
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -32,6 +55,11 @@ const BirdAtlasCard = () => {
             key={bird.id}
             bird={bird}
             onPress={() => setSelectedBird(bird)}
+            onDelete={
+              customBirds.some(b => b.id === bird.id)
+                ? () => handleDeleteBird(bird)
+                : null
+            }
           />
         ))}
       </ScrollView>
@@ -41,6 +69,11 @@ const BirdAtlasCard = () => {
           bird={selectedBird}
           visible={!!selectedBird}
           onClose={() => setSelectedBird(null)}
+          onDelete={
+            customBirds.some(b => b.id === selectedBird.id)
+              ? () => handleDeleteBird(selectedBird)
+              : null
+          }
         />
       )}
     </View>
@@ -49,25 +82,35 @@ const BirdAtlasCard = () => {
 
 export default BirdAtlasCard;
 
-const BirdCard = ({bird, onPress}) => (
+const BirdCard = ({bird, onPress, onDelete}) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
     <ImageBackground
-      source={bird.image}
+      source={typeof bird.image === 'string' ? {uri: bird.image} : bird.image}
       style={styles.cardImage}
       resizeMode="cover">
       <View style={styles.cardInfo}>
         <Text style={styles.cardTitle}>{bird.name}</Text>
         <Text style={styles.cardSubtitle}>{bird.scientificName}</Text>
       </View>
+      {/* {onDelete && (
+        <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
+          <Text style={styles.deleteButtonText}>Delete</Text>
+        </TouchableOpacity>
+      )} */}
     </ImageBackground>
   </TouchableOpacity>
 );
 
-const BirdModal = ({bird, visible, onClose}) => (
+const BirdModal = ({bird, visible, onClose, onDelete}) => (
   <Modal visible={visible} animationType="slide" transparent={true}>
     <View style={styles.modalContainer}>
       <ScrollView style={styles.modalContent}>
-        <Image source={bird.image} style={styles.modalImage} />
+        <Image
+          source={
+            typeof bird.image === 'string' ? {uri: bird.image} : bird.image
+          }
+          style={styles.modalImage}
+        />
         <Text style={styles.modalTitle}>{bird.name}</Text>
         <Text style={styles.modalSubtitle}>{bird.scientificName}</Text>
         <Text style={styles.modalText}>
@@ -83,6 +126,11 @@ const BirdModal = ({bird, visible, onClose}) => (
         <TouchableOpacity style={styles.closeButton} onPress={onClose}>
           <Text style={styles.closeButtonText}>Close</Text>
         </TouchableOpacity>
+        {onDelete && (
+          <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
+            <Text style={styles.deleteButtonText}>Delete</Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </View>
   </Modal>
@@ -193,5 +241,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontStyle: 'italic',
     color: 'white',
+  },
+  deleteButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'red',
+    padding: 5,
+    borderRadius: 5,
+  },
+  deleteButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
