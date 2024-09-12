@@ -5,7 +5,7 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
-  Alert
+  Alert,
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
@@ -41,7 +41,8 @@ const QuizQuestion = ({route, navigation}) => {
     setSelectedAnswer(selectedAnswer);
     setIsAnswered(true);
 
-    if (selectedAnswer === currentQuestion.correctAnswer) {
+    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    if (isCorrect) {
       setScore(prevScore => prevScore + 1);
     }
 
@@ -52,22 +53,23 @@ const QuizQuestion = ({route, navigation}) => {
         setSelectedAnswer(null);
         setIsAnswered(false);
       } else {
-        // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        showQuizResults();
+        // Quiz finished, handle end of quiz
+        showQuizResults(isCorrect);
       }
     }, 2000); // 2 second delay
   };
 
-  const showQuizResults = () => {
+  const showQuizResults = (isLastAnswerCorrect) => {
     const totalQuestions = quizData.questions.length;
+    const finalScore = isLastAnswerCorrect ? score + 1 : score;
     const correctAnswers = quizData.questions.map(q => `${q.question}\nCorrect Answer: ${q.correctAnswer}`).join('\n\n');
 
     // Update the quiz score in the context
-    updateQuizScore(difficulty, quizId, score);
+    updateQuizScore(difficulty, quizId, finalScore);
 
     Alert.alert(
       "Quiz Finished",
-      `Your Score: ${score}/${totalQuestions}\n\nCorrect Answers:\n${correctAnswers}`,
+      `Your Score: ${finalScore}/${totalQuestions}\n\nCorrect Answers:\n${correctAnswers}`,
       [
         { text: "OK", onPress: () => navigation.goBack() }
       ],
@@ -197,7 +199,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   answerButton: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -231,7 +233,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 28,
+    fontSize: 24,
     color: '#fff',
     textAlign: 'center',
   },
