@@ -4,6 +4,7 @@ import QuizScreen from './QuizScreen';
 import UserScreen from './UserScreen';
 import IntroScreen from './IntroScreen';
 import QuizModeScreen from './QuizModeScreen';
+import QuizPlayScreen from './QuizPlayScreen';
 
 export {
   BirdAtlasScreen,
@@ -12,4 +13,5 @@ export {
   UserScreen,
   IntroScreen,
   QuizModeScreen,
+  QuizPlayScreen,
 };
