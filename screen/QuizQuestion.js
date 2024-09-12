@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
-import { ImagedLayout } from '../components/AppLayout';
-import { useBirdContext } from '../store/bird_context';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import {ImagedLayout} from '../components/AppLayout';
+import {useBirdContext} from '../store/bird_context';
 
-const QuizQuestion = ({ route }) => {
-  const { quizId, difficulty } = route.params;
-  const { chooseQuizMode } = useBirdContext();
+const QuizQuestion = ({route}) => {
+  const {quizId, difficulty} = route.params;
+  const {chooseQuizMode} = useBirdContext();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -28,7 +34,7 @@ const QuizQuestion = ({ route }) => {
 
   const currentQuestion = quizData.questions[currentQuestionIndex];
 
-  const handleAnswer = (selectedAnswer) => {
+  const handleAnswer = selectedAnswer => {
     if (isAnswered) return;
 
     setSelectedAnswer(selectedAnswer);
@@ -46,22 +52,29 @@ const QuizQuestion = ({ route }) => {
         setIsAnswered(false);
       } else {
         // Quiz finished, handle end of quiz (e.g., show results, navigate to summary screen)
-        console.log('Quiz finished. Final score:', score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0));
+        console.log(
+          'Quiz finished. Final score:',
+          score + (selectedAnswer === currentQuestion.correctAnswer ? 1 : 0),
+        );
       }
     }, 2000); // 1.5 second delay
   };
 
-  const getButtonStyle = (option) => {
+  const getButtonStyle = option => {
     if (!isAnswered) return styles.answerButton;
-    if (option === currentQuestion.correctAnswer) return [styles.answerButton, styles.correctAnswer];
-    if (option === selectedAnswer) return [styles.answerButton, styles.wrongAnswer];
+    if (option === currentQuestion.correctAnswer)
+      return [styles.answerButton, styles.correctAnswer];
+    if (option === selectedAnswer)
+      return [styles.answerButton, styles.wrongAnswer];
     return [styles.answerButton, styles.disabledAnswer];
   };
 
-  const getTextStyle = (option) => {
+  const getTextStyle = option => {
     if (!isAnswered) return styles.answerText;
-    if (option === currentQuestion.correctAnswer) return [styles.answerText, styles.correctAnswer];
-    if (option === selectedAnswer) return [styles.answerText, styles.wrongAnswer];
+    if (option === currentQuestion.correctAnswer)
+      return [styles.answerText, styles.correctAnswer];
+    if (option === selectedAnswer)
+      return [styles.answerText, styles.wrongAnswer];
     return [styles.answerText, styles.disabledAnswer];
   };
 
@@ -76,7 +89,9 @@ const QuizQuestion = ({ route }) => {
           <View style={styles.progressWrapper}>
             <Text style={styles.progressLabel}>Question:</Text>
             <Text style={styles.progressValue}>{currentQuestionIndex + 1}</Text>
-            <Text style={styles.progressTotal}>/ {quizData.questions.length}</Text>
+            <Text style={styles.progressTotal}>
+              / {quizData.questions.length}
+            </Text>
           </View>
         </View>
         <View style={styles.questionContainer}>
@@ -86,8 +101,7 @@ const QuizQuestion = ({ route }) => {
               key={index}
               style={getButtonStyle(option)}
               onPress={() => handleAnswer(option)}
-              disabled={isAnswered}
-            >
+              disabled={isAnswered}>
               <Text style={getTextStyle(option)}>{option}</Text>
             </TouchableOpacity>
           ))}
@@ -168,7 +182,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   answerButton: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 20,
     borderRadius: 10,
     marginVertical: 10,
@@ -176,8 +189,9 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Semi-transparent white for blur effect
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 5,
     elevation: 8,
@@ -185,7 +199,7 @@ const styles = StyleSheet.create({
   correctAnswer: {
     backgroundColor: 'rgba(0, 255, 0, 0.3)',
     shadowColor: 'rgba(0, 255, 0, 0.5)',
-    shadowOffset: { width: 3, height: 9 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -193,7 +207,7 @@ const styles = StyleSheet.create({
   wrongAnswer: {
     backgroundColor: 'rgba(255, 0, 0, 0.3)',
     shadowColor: 'rgba(255, 0, 0, 0.5)',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.5,
     shadowRadius: 5,
     elevation: 8,
@@ -202,9 +216,12 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   answerText: {
-    fontSize: 18,
+    fontSize: 26,
     color: '#fff',
     textAlign: 'center',
+    fontWeight: '700',
+    borderRadius: 12,
+    overflow: 'hidden',
   },
   scoreText: {
     fontSize: 18,
