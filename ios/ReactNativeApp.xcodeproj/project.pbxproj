@@ -475,7 +475,7 @@
 				DEVELOPMENT_TEAM = HS6L3F4NSL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ReactNativeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Birdwatchers Eye Quiz";
+				INFOPLIST_KEY_CFBundleDisplayName = "Birdwatchers Of Eye Quiz Hour";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -504,7 +504,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HS6L3F4NSL;
 				INFOPLIST_FILE = ReactNativeApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Birdwatchers Eye Quiz";
+				INFOPLIST_KEY_CFBundleDisplayName = "Birdwatchers Of Eye Quiz Hour";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

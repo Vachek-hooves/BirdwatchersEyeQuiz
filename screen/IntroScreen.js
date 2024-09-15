@@ -21,7 +21,7 @@ const IntroScreen = ({navigation}) => {
     <ImagedLayout blur={0}>
       <View style={styles.container}>
         <Animated.Text style={[styles.title, {opacity: animation}]}>
-          Welcome to Birdwatchers Eye Quiz
+          Welcome to Birdwatchers Of Eye Quiz Hour
         </Animated.Text>
         <Animated.Text style={[styles.subtitle, {opacity: animation}]}>
           Test your avian identification skills!
