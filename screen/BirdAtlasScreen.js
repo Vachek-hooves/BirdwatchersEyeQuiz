@@ -20,7 +20,6 @@ const DEFAULT_IMAGE = require('../assets/img/cardImg/NoImage.jpg');
 
 const BirdAtlasScreen = () => {
   const {customBirds, addCustomBird} = useBirdContext();
-  console.log(customBirds);
   const [modalVisible, setModalVisible] = useState(false);
   const [newBird, setNewBird] = useState({
     image: '',

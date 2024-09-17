@@ -19,6 +19,7 @@ import {ImagedLayout} from './components/AppLayout';
 import IconMap from './components/ui/icons/IconMap';
 import {BirdProvider} from './store/bird_context';
 import {useEffect, useRef, useState} from 'react';
+import {Animated,View} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -87,12 +88,44 @@ const TabMenu = () => {
   );
 };
 
-// const loader = [
-//   require('./assets/loder/'),
-//   require('./assets/img/'),
-// ];
+const loader = [
+  require('./assets/loder/loader1.png'),
+  require('./assets/loder/loader2.png'),
+];
 
 function App() {
+  const [id, setItem] = useState(0);
+  const animation = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    fadeStart();
+    const timeOut = setTimeout(() => {
+      navigateToMenu();
+    }, 6000);
+    return () => clearTimeout(timeOut);
+  }, []);
+  const fadeStart = () => {
+    Animated.timing(animation, {
+      toValue: 1,
+      duration: 1500,
+      useNativeDriver: true,
+    }).start(() => fadeFinish());
+  };
+
+  const fadeFinish = () => {
+    Animated.timing(animation, {
+      toValue: 0,
+      duration: 1500,
+      useNativeDriver: true,
+    }).start(() => {
+      setItem(prevState => prevState + 1);
+      fadeStart();
+    });
+  };
+  const navigateToMenu = () => {
+    setItem(2);
+  };
+
   return (
     <BirdProvider>
       <NavigationContainer>
@@ -102,7 +135,26 @@ function App() {
             animation: 'fade_from_bottom',
             animationDuration: 800,
           }}>
-          <Stack.Screen name="IntroScreen" component={IntroScreen} />
+          {id < 2 ? (
+            <Stack.Screen name="Welcome" options={{headerShown: false}}>
+              {() => (
+                <View style={{flex: 1}}>
+                  <Animated.Image
+                    source={loader[id]}
+                    style={[
+                      {width: '100%', flex: 1},
+                      {opacity: animation},
+                    ]}></Animated.Image>
+                </View>
+              )}
+            </Stack.Screen>
+          ) : (
+            <Stack.Screen
+              name="IntroScreen"
+              component={IntroScreen}
+            />
+          )}
+          {/* <Stack.Screen name="IntroScreen" component={IntroScreen} /> */}
           <Stack.Screen name="TabMenuRender" component={TabMenu} />
           <Stack.Screen name="QuizModeScreen" component={QuizModeScreen} />
           <Stack.Screen name="QuizPlayScreen" component={QuizPlayScreen} />
