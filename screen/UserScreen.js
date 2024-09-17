@@ -187,10 +187,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     fontSize: 24,
-    color: COLOR.lightGreen,
+    // color: COLOR.lightGreen,
     fontWeight: '700',
-    letterSpacing:2
-    
+    letterSpacing: 2,
+    color: COLOR.gold,
   },
   errorText: {
     color: 'red',
@@ -235,24 +235,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLOR.lightGreen,
+    backgroundColor: COLOR.gold,
     padding: 10,
     borderRadius: 10,
   },
   editButtonText: {
-    color: COLOR.milk,
+    color: COLOR.black,
     fontWeight: '700',
     fontSize: 18,
     marginLeft: 10,
   },
   saveButton: {
-    backgroundColor: COLOR.lightGreen,
+    // backgroundColor: COLOR.lightGreen,
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
+    backgroundColor: COLOR.gold,
   },
   saveButtonText: {
-    color: COLOR.milk,
+    // color: COLOR.milk,
     fontWeight: '700',
     fontSize: 18,
   },
@@ -260,16 +261,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 3,
-    borderColor: COLOR.lightGreen,
+    // borderColor: COLOR.lightGreen,
     borderRadius: 10,
     marginBottom: 10,
     paddingHorizontal: 10,
-    
+    borderBlockColor: COLOR.gold,
   },
   inputIcon: {
     marginRight: 10,
   },
-  text: {fontWeight: '600', fontSize: 20},
+  text: {fontWeight: '600', fontSize: 20, color: COLOR.gold},
   nameSaved: {
     marginVertical: 10,
     fontSize: 32,
@@ -301,12 +302,12 @@ const styles = StyleSheet.create({
   levelTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: COLOR.matteYellow,
+    color: COLOR.gold,
     marginBottom: 5,
   },
   quizScore: {
     fontSize: 16,
-    color: COLOR.milk,
+    color: COLOR.gold,
     marginBottom: 3,
   },
 });

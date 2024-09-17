@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLOR.lightGreen,
+    backgroundColor: COLOR.gold,
   },
   buttonText: {
     fontSize: 40,
@@ -161,13 +161,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   searchButton: {
-    backgroundColor: COLOR.lightGreen,
+    // backgroundColor: COLOR.lightGreen,
     padding: 10,
     borderRadius: 5,
+    backgroundColor: COLOR.gold,
   },
   searchButtonText: {
-    color: 'white',
+    // color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 24,
+    color: COLOR.black,
   },
 });

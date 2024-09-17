@@ -47,7 +47,10 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLOR.lightGreen + 90,
+    // backgroundColor: COLOR.lightGreen + 90,
+    backgroundColor:'rgba(0, 0, 0, 0.4)',
+    borderRadius:16
+
   },
   title: {
     fontSize: 24,
@@ -55,6 +58,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginBottom: 40,
     textAlign: 'center',
+    color:COLOR.gold
   },
   paragraph: {
     fontSize: 18,
@@ -63,14 +67,14 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   button: {
-    backgroundColor: COLOR.lightGreen,
+    backgroundColor: COLOR.gold,
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 25,
     marginTop: 20,
   },
   buttonText: {
-    color: COLOR.milk,
+    color: COLOR.black,
     fontSize: 22,
     fontWeight: 'bold',
     letterSpacing: 2,

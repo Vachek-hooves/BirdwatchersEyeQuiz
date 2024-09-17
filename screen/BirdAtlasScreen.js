@@ -130,6 +130,7 @@ const BirdAtlasScreen = () => {
               onPress={() => setModalVisible(false)}>
               <Text style={styles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
+            <View style={{height: 100}}></View>
           </ScrollView>
         </View>
       </Modal>
@@ -141,14 +142,15 @@ export default BirdAtlasScreen;
 
 const styles = StyleSheet.create({
   addButton: {
-    backgroundColor: '#007AFF',
+    // backgroundColor: '#007AFF',
+    backgroundColor: COLOR.gold,
     padding: 10,
     borderRadius: 5,
     alignSelf: 'center',
     marginVertical: 10,
   },
   addButtonText: {
-    color: 'white',
+    color: COLOR.black,
     fontWeight: 'bold',
     fontSize: 16,
   },
@@ -159,17 +161,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    backgroundColor: COLOR.lightGreen,
+    // backgroundColor: COLOR.lightGreen,
     borderRadius: 20,
     padding: 20,
     width: '90%',
     maxHeight: '90%',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
   },
   modalTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    color: COLOR.gold,
   },
   input: {
     backgroundColor: 'white',
@@ -178,28 +182,37 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   saveButton: {
-    backgroundColor: '#007AFF',
+    // backgroundColor: '#007AFF',
+    backgroundColor: COLOR.gold,
     padding: 10,
     borderRadius: 5,
     alignSelf: 'center',
     marginTop: 20,
+    marginBottom: 20,
+    width: '50%',
   },
   saveButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 22,
+    color: COLOR.black,
+    textAlign: 'center',
   },
   cancelButton: {
-    backgroundColor: '#FF3B30',
+    // backgroundColor: '#FF3B30',
+    backgroundColor: COLOR.gold,
     padding: 10,
     borderRadius: 5,
     alignSelf: 'center',
     marginTop: 10,
+    width: '50%',
   },
   cancelButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 22,
+    color: COLOR.black,
+    textAlign: 'center',
   },
   imagePicker: {
     color: COLOR.milk,

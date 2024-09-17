@@ -12,7 +12,7 @@ const ImagedLayout = ({children, source, style, blur}) => {
     <ImageBackground
       style={[style, {flex: 1}]}
       blurRadius={blur}
-      source={require('../../assets/img/bg/eagleDraw.jpg')}>
+      source={require('../../assets/img/bg/bg.png')}>
       <SafeAreaView style={{flex:1}}>{children}</SafeAreaView>
     </ImageBackground>
   );

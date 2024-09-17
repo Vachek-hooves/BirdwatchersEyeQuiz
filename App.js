@@ -18,6 +18,7 @@ import {COLOR} from './constants/colors';
 import {ImagedLayout} from './components/AppLayout';
 import IconMap from './components/ui/icons/IconMap';
 import {BirdProvider} from './store/bird_context';
+import {useEffect, useRef, useState} from 'react';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,6 +86,11 @@ const TabMenu = () => {
     </Tab.Navigator>
   );
 };
+
+// const loader = [
+//   require('./assets/loder/'),
+//   require('./assets/img/'),
+// ];
 
 function App() {
   return (

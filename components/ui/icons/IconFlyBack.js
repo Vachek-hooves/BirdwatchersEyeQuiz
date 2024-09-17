@@ -16,7 +16,7 @@ const IconFlyBack = () => {
           height: 60,
           marginVertical: 30,
           marginRight: 80,
-          tintColor: COLOR.lightGreen,
+          tintColor: COLOR.gold,
         }}
       />
     </TouchableOpacity>

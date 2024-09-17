@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import {useRef, useEffect} from 'react';
 import {ImagedLayout} from '../components/AppLayout';
+import { COLOR } from '../constants/colors';
 
 const IntroScreen = ({navigation}) => {
   const animation = useRef(new Animated.Value(0)).current;
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#ffffff',
+    color:COLOR.gold,
     textAlign: 'center',
     marginBottom: 16,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 18,
-    color: '#ffffff',
+    color:COLOR.gold,
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},

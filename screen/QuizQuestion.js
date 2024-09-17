@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {ImagedLayout} from '../components/AppLayout';
 import {useBirdContext} from '../store/bird_context';
+import {COLOR} from '../constants/colors';
 
 const QuizQuestion = ({route, navigation}) => {
   const {quizId, difficulty} = route.params;
@@ -240,11 +241,12 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   questionText: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#fff',
+    // color: '#fff',
     textAlign: 'center',
     marginBottom: 20,
+    color: COLOR.gold,
   },
   answerButton: {
     padding: 20,
@@ -282,8 +284,9 @@ const styles = StyleSheet.create({
   },
   answerText: {
     fontSize: 23,
-    color: '#fff',
+    // color: '#fff',
     textAlign: 'center',
+    color: COLOR.gold,
   },
   correctAnswerText: {
     fontWeight: 'bold',

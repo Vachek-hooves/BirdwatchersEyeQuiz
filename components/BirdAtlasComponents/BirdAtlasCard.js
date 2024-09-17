@@ -167,16 +167,7 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'flex-end',
   },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  cardSubtitle: {
-    fontSize: 12,
-    fontStyle: 'italic',
-    textAlign: 'center',
-  },
+
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -231,7 +222,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   cardInfo: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     padding: 10,
   },
   cardTitle: {
@@ -239,11 +230,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 5,
+    color: COLOR.gold,
   },
   cardSubtitle: {
     fontSize: 14,
     fontStyle: 'italic',
     color: 'white',
+    color: COLOR.gold,
   },
   deleteButton: {
     position: 'absolute',

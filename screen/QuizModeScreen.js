@@ -40,13 +40,14 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: '800',
     marginBottom: 40,
-    color: COLOR.milk,
+    // color: COLOR.milk,
     textAlign: 'center',
-    color: COLOR.lightGreen,
+    // color: COLOR.lightGreen,
     letterSpacing: 2,
+    color: COLOR.gold,
   },
   cardContainer: {
     alignItems: 'center',

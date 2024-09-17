@@ -9,6 +9,7 @@ import {
 import {useBirdContext} from '../store/bird_context';
 import {ImagedLayout} from '../components/AppLayout';
 import {IconFlyBack} from '../components/ui/icons';
+import { COLOR } from '../constants/colors';
 
 // New component to display difficulty
 const DifficultyBadge = ({ difficulty }) => (
@@ -91,8 +92,9 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#fff',
+    // color: '#fff',
     marginBottom: 8,
+    color:COLOR.gold
   },
   cardStatus: {
     fontSize: 16,

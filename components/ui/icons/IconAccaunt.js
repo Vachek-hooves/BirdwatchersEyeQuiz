@@ -7,7 +7,8 @@ const IconAccaunt = () => {
       style={{
         width: 30,
         height: 30,
-        tintColor: COLOR.lightGreen,
+        // tintColor: COLOR.lightGreen,
+        tintColor: COLOR.gold,
       }}
       source={require('../../../assets/icons/user.png')}
     />

@@ -4,4 +4,7 @@ export const COLOR = {
 
   green: '#4CAF50',
   red: '#F44336',
+
+  gold: '#FFB200',
+  black: '#1F1717',
 };
